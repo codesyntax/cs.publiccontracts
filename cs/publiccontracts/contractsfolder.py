@@ -1,0 +1,103 @@
+from zope import schema
+from cs.publiccontracts import MessageFactory as _
+from five import grok
+from plone.directives import dexterity, form
+from plone.namedfile.interfaces import IImageScaleTraversable
+from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
+from zope.interface import Interface
+
+class IContractTypesRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract type value'))
+    name = schema.TextLine(title=_(u'Contract type name'))
+
+class IContractStatesRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract state value'))
+    name = schema.TextLine(title=_(u'Contract state name'))
+
+class IContractProceduresRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract procedure value'))
+    name = schema.TextLine(title=_(u'Contract procedure name'))
+
+class IContractProcessingsRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract processing value'))
+    name = schema.TextLine(title=_(u'Contract processing name'))
+
+
+# Interface class; used to define content-type schema.
+class IContractsFolder(form.Schema, IImageScaleTraversable):
+    """
+    Contracts Folder
+    """
+    # If you want a schema-defined interface, delete the form.model
+    # line below and delete the matching file in the models sub-directory.
+    # If you want a model-based interface, edit
+    # models/contractsfolder.xml to define the content type
+    # and add directives here as necessary.
+
+
+# Custom content-type class; objects created for this content type will
+# be instances of this class. Use this class to add content-type specific
+# methods and properties. Put methods that are mainly useful for rendering
+# in separate view classes.
+class ContractsFolder(dexterity.Container):
+    grok.implements(IContractsFolder)
+    # Add your class methods and properties here
+
+    form.widget(types=DataGridFieldFactory)
+    types = schema.List(title=_(u'Contract Types'),
+        description=_(u'Enter here the contract types'),
+        required=True,
+        value_type=DictRow(title=_(u'Contract Types'),
+                          schema=IContractTypesRowSchema,
+                          required=False)
+        )
+    """
+    form.widget(states=DataGridFieldFactory)
+    states = schema.List(title=_(u'Contract States'),
+        description=_(u'Enter here the contract states'),
+        required=True,
+        value_type=DictRow(title=_(u'Contract States'),
+                          schema=IContractStatesRowSchema,
+                          required=False)
+        )
+
+    form.widget(procedures=DataGridFieldFactory)
+    procedures = schema.List(title=_(u'Contract Procedures'),
+        description=_(u'Enter here the contract Procedures'),
+        required=True,
+        value_type=DictRow(title=_(u'Contract Procedures'),
+                          schema=IContractProceduresRowSchema,
+                          required=False)
+        )
+
+    form.widget(processings=DataGridFieldFactory)
+    processings = schema.List(title=_(u'Contract Processings'),
+        description=_(u'Enter here the contract Processings'),
+        required=True,
+        value_type=DictRow(title=_(u'Contract Processings'),
+                          schema=IContractProcessingsRowSchema,
+                          required=False)
+        )
+
+    """
+
+# View class
+# The view will automatically use a similarly named template in
+# templates called contractsfolderview.pt .
+# Template filenames should be all lower case.
+# The view will render when you request a content object with this
+# interface with "/@@view" appended unless specified otherwise
+# using grok.name below.
+# This will make this view the default view for your content-type
+
+grok.templatedir('templates')
+
+
+class ContractsFolderView(grok.View):
+    grok.context(IContractsFolder)
+    grok.require('zope2.View')
+    grok.name('view')
