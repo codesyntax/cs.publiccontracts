@@ -16,7 +16,7 @@
 <metal:contentitle fill-slot="content-title">
 <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
 <tal:conditiongenericfile tal:define="generic_file context/generic_file" tal:condition="generic_file">
-<a class="pull-right" i18n:translate="generic-file-text" tal:attributes="href string:${context/absolute_url}/@@download/generic_file">
+<a class="pull-right btn" i18n:translate="generic-file-text" tal:attributes="href string:${context/absolute_url}/@@download/generic_file">
   Generic File
 </a>
 </tal:conditiongenericfile>

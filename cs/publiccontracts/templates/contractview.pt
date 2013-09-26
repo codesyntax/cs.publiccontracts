@@ -60,7 +60,7 @@
             </p>
 
             <div tal:condition="python: content_type.startswith('text')">
-                <h2 i18n:translate="heading_file_contents">File contents</h2>
+                <h2 i28n:domain="plone" i18n:translate="heading_file_contents">File contents</h2>
                 <pre tal:content="file/file/data|nothing" />
             </div>
 
