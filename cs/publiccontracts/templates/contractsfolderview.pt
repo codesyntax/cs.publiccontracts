@@ -12,15 +12,90 @@
     content unless activated by creation of a view class with a matching name.
 </tal:comment>
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
 
-    <h2>
-        Rendered from 
-        templates/<span tal:replace="template/id" />
-    </h2>
-    
-  </metal:content-core>
+<metal:contentitle fill-slot="content-title">
+<h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+<tal:conditiongenericfile tal:define="generic_file context/generic_file" tal:condition="generic_file">
+<a class="pull-right" i18n:translate="generic-file-text" tal:attributes="href string:${context/absolute_url}/@@download/generic_file">
+  Generic File
+</a>
+</tal:conditiongenericfile>
+</metal:contentitle>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core" tal:define="contracts_dict view/contracts_dict;
+  toLocalizedTime nocall:here/@@plone/toLocalizedTime">
+
+  <ul class="tabs">
+    <li tal:repeat="tab contracts_dict">
+            <a tal:define="tab_id python:tab['value']"
+               tal:attributes="href string:#tab-${tab_id}"
+               tal:content="python:tab['title'] + ' (' + str(len(tab['contracts'])) + ')'">
+               Tab title
+            </a>
+    </li>
+  </ul>
+
+  <tal:repeat repeat="contract_dict contracts_dict">
+  <div tal:attributes="id python:'tab-' + contract_dict['value']">
+    <table class="grid listing"
+            tal:define="contracts python:contract_dict['contracts']"
+            tal:condition="contracts">
+      <tr>
+        <th i18n:translate="file_number">
+          file_number
+        </th>
+
+        <th i18n:translate="title">
+          Title
+        </th>
+
+        <th i18n:translate="file_type">
+          file_type
+        </th>
+
+        <th i18n:translate="file_procedure">
+          file_procedure
+        </th>
+
+        <th i18n:translate="file_processing">
+          file_processing
+        </th>
+
+        <th i18n:translate="published_date">
+          published_date
+        </th>
+
+        <th i18n:translate="last_date">
+          last_date
+        </th>
+      </tr>
+
+      <tr tal:repeat="contract contracts">
+        <tal:define define="contract_obj contract/getObject">
+        <td tal:content="contract_obj/file_number">
+        </td>
+        <td>
+          <a tal:content="contract_obj/Title" tal:attributes="href contract_obj/absolute_url"></a>
+        </td>
+        <td tal:content="contract_obj/file_type_string">
+        </td>
+        <td tal:content="contract_obj/file_procedure_string">
+        </td>
+        <td tal:content="contract_obj/file_processing_string">
+        </td>
+        <td tal:content="python:toLocalizedTime(contract_obj.EffectiveDate())">
+        </td>
+        <td tal:content="python:toLocalizedTime(contract_obj.last_date)">
+        </td>
+      </tal:define>
+      </tr>
+
+    </table>
+  </div>
+</tal:repeat>
+
+</metal:content-core>
 </metal:main>
 
 </body>

@@ -1,15 +1,11 @@
-from zope.interface import directlyProvides
-from zope.schema.vocabulary import SimpleVocabulary
+from Acquisition import aq_inner
 from Acquisition import aq_parent
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleTerm
 from five import grok
 from plone.directives import dexterity, form
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
 from cs.publiccontracts import MessageFactory as _
 from plone.app.textfield import RichText
-from zope.interface import implements
 # Interface class; used to define content-type schema.
 class IContract(form.Schema, IImageScaleTraversable):
     """
@@ -31,7 +27,7 @@ class IContract(form.Schema, IImageScaleTraversable):
                           vocabulary=u'contract_types',
                           required=True,
                           )
-    """
+
     file_procedure = schema.Choice(title=_(u'File Procedure'),
                           description=_(u'Contract Procedure'),
                           vocabulary=u'contract_procedures',
@@ -49,7 +45,7 @@ class IContract(form.Schema, IImageScaleTraversable):
                           vocabulary=u'contract_states',
                           required=True,
                           )
-    """
+
     last_date = schema.Datetime(
             title=_(u"Last Date"),
             description=_(u'Last date for the submission of tenders'),
@@ -72,6 +68,55 @@ class Contract(dexterity.Container):
     grok.implements(IContract)
     # Add your class methods and properties here
 
+    def file_type_string(self):
+
+        file_type_value = self.file_type
+        contracts_folder = aq_parent(self)
+        contracts_folder_types = contracts_folder.types
+
+        for i in contracts_folder_types:
+            if i['value']==file_type_value:
+                return i['name']
+        return None
+
+    def file_procedure_string(self):
+
+        file_procedure_value = self.file_procedure
+        contracts_folder = aq_parent(self)
+        contracts_folder_procedures = contracts_folder.procedures
+
+        for i in contracts_folder_procedures:
+            if i['value']==file_procedure_value:
+                return i['name']
+        return None
+
+    def file_processing_string(self):
+
+        file_processing_value = self.file_processing
+        contracts_folder = aq_parent(self)
+        contracts_folder_processings = contracts_folder.processings
+
+        for i in contracts_folder_processings:
+            if i['value']==file_processing_value:
+                return i['name']
+        return None
+
+    def file_state_string(self):
+
+        file_state_value = self.file_state
+        contracts_folder = aq_parent(self)
+        contracts_folder_states = contracts_folder.states
+
+        for i in contracts_folder_states:
+            if i['value']==file_state_value:
+                return i['name']
+        return None
+
+    def files(self):
+        return self.getFolderContents({'portal_type':'File'},full_objects=1)
+
+    def contract_state_index(self):
+        return self.file_state
 
 # View class
 # The view will automatically use a similarly named template in
@@ -89,19 +134,3 @@ class ContractView(grok.View):
     grok.context(IContract)
     grok.require('zope2.View')
     grok.name('view')
-
-def ContractTypesVocabulary(context):
-    implements(IVocabularyFactory)
-
-    def __call__(self, context=None):
-        """ Vocabularu factory for all contract types"""
-        contracts_folder = aq_parent(context)
-        contracts_types = contracts_folder.types
-        items = []
-
-        for value, name in contracts_types:
-            items.append(SimpleTerm(value, value, name))
-
-        return SimpleVocabulary(items)
-
-grok.global_utility(ContractTypesVocabulary, name=u'Lista-de-pilotos')

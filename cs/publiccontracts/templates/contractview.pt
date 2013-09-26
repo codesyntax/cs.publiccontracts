@@ -15,12 +15,60 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
-    <h2>
-        Rendered from 
-        templates/<span tal:replace="template/id" />
-    </h2>
-    
-  </metal:content-core>
+    <dl tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime">
+      <dt i18n:translate="file_number">file_number</dt>
+      <dd tal:content="context/file_number"></dd>
+
+      <dt i18n:translate="file_type">file_type</dt>
+      <dd tal:content="context/file_type_string"></dd>
+
+      <dt i18n:translate="file_procedure">file_procedure</dt>
+      <dd tal:content="context/file_procedure_string"></dd>
+
+      <dt i18n:translate="file_processing">file_processing</dt>
+      <dd tal:content="context/file_processing_string"></dd>
+
+      <dt i18n:translate="file_state">file_state</dt>
+      <dd tal:content="context/file_state_string"></dd>
+
+      <dt i18n:translate="last_date">last_date</dt>
+      <dd tal:content="python:toLocalizedTime(context.last_date)"></dd>
+
+      <tal:condition tal:condition="context/info">
+      <dt i18n:translate="info">info</dt>
+      <dd tal:content="structure context/info/output"></dd>
+    </tal:condition>
+    </dl>
+
+    <tal:define define="files context/files" tal:condition="files">
+    <h2 i18n:translate="files">Files</h2>
+     <tal:file repeat="file files">
+
+     <tal:filecontent
+                     tal:define="content_type file/file/contentType|nothing;
+                                 v python:file.restrictedTraverse('contenttype_utils');">
+            <p>
+                <a tal:attributes="href string:${file/absolute_url}/@@download/file/${file/file/filename}">
+                    <img tal:attributes="src python: v.getMimeTypeIcon(file.file);
+                                         alt content_type;" border="0"  />
+                    <tal:name tal:content="file/file/filename" >Filename</tal:name>
+                </a>
+                <span class="discreet"
+                      tal:define="size file/file/getSize;
+                                  kb python:size/1024">
+                      &mdash; <span tal:replace="kb" /> KB</span>
+            </p>
+
+            <div tal:condition="python: content_type.startswith('text')">
+                <h2 i18n:translate="heading_file_contents">File contents</h2>
+                <pre tal:content="file/file/data|nothing" />
+            </div>
+
+      </tal:filecontent>
+      </tal:file>
+    </tal:define>
+
+</metal:content-core>
 </metal:main>
 
 </body>
