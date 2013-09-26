@@ -12,20 +12,24 @@ from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from zope.interface import Interface
 from plone.namedfile.field import NamedBlobFile
 
+
 class IContractTypesRowSchema(Interface):
 
     value = schema.TextLine(title=_(u'Contract type value'))
     name = schema.TextLine(title=_(u'Contract type name'))
+
 
 class IContractStatesRowSchema(Interface):
 
     value = schema.TextLine(title=_(u'Contract state value'))
     name = schema.TextLine(title=_(u'Contract state name'))
 
+
 class IContractProceduresRowSchema(Interface):
 
     value = schema.TextLine(title=_(u'Contract procedure value'))
     name = schema.TextLine(title=_(u'Contract procedure name'))
+
 
 class IContractProcessingsRowSchema(Interface):
 
@@ -46,7 +50,7 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     form.widget(types=DataGridFieldFactory)
     types = schema.List(title=_(u'Contract Types'),
         description=_(u'Enter here the contract types'),
-        required=True,
+        required=False,
         value_type=DictRow(title=_(u'Contract Types'),
                           schema=IContractTypesRowSchema,
                           required=False)
@@ -55,7 +59,7 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     form.widget(states=DataGridFieldFactory)
     states = schema.List(title=_(u'Contract States'),
         description=_(u'Enter here the contract states'),
-        required=True,
+        required=False,
         value_type=DictRow(title=_(u'Contract States'),
                           schema=IContractStatesRowSchema,
                           required=False)
@@ -64,7 +68,7 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     form.widget(procedures=DataGridFieldFactory)
     procedures = schema.List(title=_(u'Contract Procedures'),
         description=_(u'Enter here the contract Procedures'),
-        required=True,
+        required=False,
         value_type=DictRow(title=_(u'Contract Procedures'),
                           schema=IContractProceduresRowSchema,
                           required=False)
@@ -73,7 +77,7 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     form.widget(processings=DataGridFieldFactory)
     processings = schema.List(title=_(u'Contract Processings'),
         description=_(u'Enter here the contract Processings'),
-        required=True,
+        required=False,
         value_type=DictRow(title=_(u'Contract Processings'),
                           schema=IContractProcessingsRowSchema,
                           required=False)
@@ -82,6 +86,7 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     generic_file = NamedBlobFile(title=_(u'Generic File'),
                            required=False,
      )
+
 
 
 
@@ -118,16 +123,64 @@ class ContractsFolderView(grok.View):
         states_dict = context.states
         catalog = getToolByName(context, 'portal_catalog')
         states_list = []
+        contracts_path = '/'.join(context.getPhysicalPath())
+        if not states_dict:
+            state_dict = {}
+            contracts = catalog(portal_type="Contract",
+                                review_state="published",
+                                path=contracts_path)
+            state_dict['contracts'] = contracts
+            state_dict['title'] = ''
+            state_dict['value'] = ''
+            states_list.append(state_dict)
+            return states_list
+
         for state in states_dict:
             state_dict = {}
             state_value = state['value']
-            contracts = catalog(portal_type="Contract", review_state="published", contract_state=state_value)
+            contracts = catalog(portal_type="Contract",
+                                review_state="published",
+                                contract_state=state_value,
+                                path=contracts_path)
             state_dict['title'] = state['name']
             state_dict['value'] = state['value']
             state_dict['contracts'] = contracts
 
             states_list.append(state_dict)
         return states_list
+
+    def has_states(self):
+        context = aq_inner(self.context)
+        states_dict = context.states
+        if states_dict:
+            return True
+        else:
+            return False
+
+    def has_procedures(self):
+        context = aq_inner(self.context)
+        procedures_dict = context.procedures
+        if procedures_dict:
+            return True
+        else:
+            return False
+
+    def has_processings(self):
+        context = aq_inner(self.context)
+        processings_dict = context.processings
+        if processings_dict:
+            return True
+        else:
+            return False
+
+    def has_types(self):
+        context = aq_inner(self.context)
+        types_dict = context.types
+        if types_dict:
+            return True
+        else:
+            return False
+
 
 class ContractTypesVocabulary(object):
     implements(IVocabularyFactory)
@@ -136,12 +189,11 @@ class ContractTypesVocabulary(object):
         """ Vocabularu factory for all contract types"""
         contracts_folder = context
         contracts_types = contracts_folder.types
-
-        items = [(i['name'],i['value']) for i in contracts_types]
-
+        items = [(i['name'], i['value']) for i in contracts_types]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractTypesVocabulary, name=u'contract_types')
+
 
 class ContractProceduresVocabulary(object):
     implements(IVocabularyFactory)
@@ -150,12 +202,11 @@ class ContractProceduresVocabulary(object):
         """ Vocabularu factory for all contract types"""
         contracts_folder = context
         contracts_procedures = contracts_folder.procedures
-
-        items = [(i['name'],i['value']) for i in contracts_procedures]
-
+        items = [(i['name'], i['value']) for i in contracts_procedures]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractProceduresVocabulary, name=u'contract_procedures')
+
 
 class ContractProcessingsVocabulary(object):
     implements(IVocabularyFactory)
@@ -164,12 +215,11 @@ class ContractProcessingsVocabulary(object):
         """ Vocabularu factory for all contract types"""
         contracts_folder = context
         contracts_processings = contracts_folder.processings
-
-        items = [(i['name'],i['value']) for i in contracts_processings]
-
+        items = [(i['name'], i['value']) for i in contracts_processings]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractProcessingsVocabulary, name=u'contract_processings')
+
 
 class ContractStatesVocabulary(object):
     implements(IVocabularyFactory)
@@ -178,9 +228,7 @@ class ContractStatesVocabulary(object):
         """ Vocabularu factory for all contract types"""
         contracts_folder = context
         contracts_states = contracts_folder.states
-
-        items = [(i['name'],i['value']) for i in contracts_states]
-
+        items = [(i['name'], i['value']) for i in contracts_states]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractStatesVocabulary, name=u'contract_states')

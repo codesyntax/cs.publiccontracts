@@ -25,31 +25,31 @@ class IContract(form.Schema, IImageScaleTraversable):
     file_type = schema.Choice(title=_(u'File Type'),
                           description=_(u'Contract Type'),
                           vocabulary=u'contract_types',
-                          required=True,
+                          required=False,
                           )
 
     file_procedure = schema.Choice(title=_(u'File Procedure'),
                           description=_(u'Contract Procedure'),
                           vocabulary=u'contract_procedures',
-                          required=True,
+                          required=False,
                           )
 
     file_processing = schema.Choice(title=_(u'File Processing'),
                           description=_(u'Contract Processing'),
                           vocabulary=u'contract_processings',
-                          required=True,
+                          required=False,
                           )
 
     file_state = schema.Choice(title=_(u'File State'),
                           description=_(u'Contract State'),
                           vocabulary=u'contract_states',
-                          required=True,
+                          required=False,
                           )
 
     last_date = schema.Datetime(
             title=_(u"Last Date"),
             description=_(u'Last date for the submission of tenders'),
-            required=True,
+            required=False,
         )
 
     info = RichText(title=_(u'info'),

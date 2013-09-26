@@ -15,24 +15,51 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
-    <dl tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime">
-      <dt i18n:translate="file_number">file_number</dt>
-      <dd tal:content="context/file_number"></dd>
+    <h2 id="file-number">
+      <span i18n:translate="file_number_title">File number:</span>
+      <span tal:content="context/file_number"></span>
+    </h2>
 
-      <dt i18n:translate="file_type">file_type</dt>
-      <dd tal:content="context/file_type_string"></dd>
+    <dl class="contract-dates" tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime">
 
-      <dt i18n:translate="file_procedure">file_procedure</dt>
-      <dd tal:content="context/file_procedure_string"></dd>
+      <tal:define define="published_date context/EffectiveDate"
+                  condition="published_date">
+        <dt i18n:translate="published_date">published_date</dt>
+        <dd tal:content="python:toLocalizedTime(published_date)"></dd>
+     </tal:define>
 
-      <dt i18n:translate="file_processing">file_processing</dt>
-      <dd tal:content="context/file_processing_string"></dd>
+      <tal:define define="last_date context/last_date"
+                  condition="last_date">
+        <dt i18n:translate="last_date">last_date</dt>
+        <dd tal:content="python:toLocalizedTime(last_date )"></dd>
+    </tal:define>
+    </dl>
 
-      <dt i18n:translate="file_state">file_state</dt>
-      <dd tal:content="context/file_state_string"></dd>
+    <dl class="contract-information">
 
-      <dt i18n:translate="last_date">last_date</dt>
-      <dd tal:content="python:toLocalizedTime(context.last_date)"></dd>
+      <tal:define define="file_type_string context/file_type_string"
+                  condition="file_type_string">
+        <dt i18n:translate="file_type">file_type</dt>
+        <dd tal:content="file_type_string"></dd>
+      </tal:define>
+
+      <tal:define define="file_procedure_string context/file_procedure_string"
+                  condition="file_procedure_string">
+        <dt i18n:translate="file_procedure_string">file_procedure</dt>
+        <dd tal:content="file_procedure_string"></dd>
+      </tal:define>
+
+      <tal:define define="file_processing context/file_processing_string"
+                  condition="file_processing">
+        <dt i18n:translate="file_processing">file_processing</dt>
+        <dd tal:content="file_processing"></dd>
+      </tal:define>
+
+      <tal:define define="file_state context/file_state_string"
+                  condition="file_state">
+        <dt i18n:translate="file_state">file_state</dt>
+        <dd tal:content="file_state"></dd>
+      </tal:define>
 
       <tal:condition tal:condition="context/info">
       <dt i18n:translate="info">info</dt>

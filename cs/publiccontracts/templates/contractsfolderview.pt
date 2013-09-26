@@ -14,19 +14,27 @@
 
 
 <metal:contentitle fill-slot="content-title">
-<h1 class="documentFirstHeading" tal:content="context/Title"></h1>
-<tal:conditiongenericfile tal:define="generic_file context/generic_file" tal:condition="generic_file">
-<a class="pull-right btn" i18n:translate="generic-file-text" tal:attributes="href string:${context/absolute_url}/@@download/generic_file">
-  Generic File
-</a>
-</tal:conditiongenericfile>
+
+      <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+
+      <tal:conditiongenericfile tal:define="generic_file context/generic_file" tal:condition="generic_file">
+            <a class="pull-right btn" i18n:translate="generic-file-text"
+              tal:attributes="href string:${context/absolute_url}/@@download/generic_file">
+              Generic File
+            </a>
+      </tal:conditiongenericfile>
+
 </metal:contentitle>
 
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core" tal:define="contracts_dict view/contracts_dict;
+                                                              has_states view/has_states;
+                                                              has_procedures view/has_procedures;
+                                                              has_processings view/has_processings;
+                                                              has_types view/has_types;
   toLocalizedTime nocall:here/@@plone/toLocalizedTime">
 
-  <ul class="tabs">
+  <ul class="tabs" tal:condition="has_states">
     <li tal:repeat="tab contracts_dict">
             <a tal:define="tab_id python:tab['value']"
                tal:attributes="href string:#tab-${tab_id}"
@@ -50,15 +58,15 @@
           Title
         </th>
 
-        <th i18n:translate="file_type">
+        <th i18n:translate="file_type" tal:condition="has_types">
           file_type
         </th>
 
-        <th i18n:translate="file_procedure">
+        <th i18n:translate="file_procedure" tal:condition="has_procedures">
           file_procedure
         </th>
 
-        <th i18n:translate="file_processing">
+        <th i18n:translate="file_processing" tal:condition="has_processings">
           file_processing
         </th>
 
@@ -78,11 +86,11 @@
         <td>
           <a tal:content="contract_obj/Title" tal:attributes="href contract_obj/absolute_url"></a>
         </td>
-        <td tal:content="contract_obj/file_type_string">
+        <td tal:content="contract_obj/file_type_string" tal:condition="has_types">
         </td>
-        <td tal:content="contract_obj/file_procedure_string">
+        <td tal:content="contract_obj/file_procedure_string" tal:condition="has_procedures">
         </td>
-        <td tal:content="contract_obj/file_processing_string">
+        <td tal:content="contract_obj/file_processing_string" tal:condition="has_processings">
         </td>
         <td tal:content="python:toLocalizedTime(contract_obj.EffectiveDate())">
         </td>
