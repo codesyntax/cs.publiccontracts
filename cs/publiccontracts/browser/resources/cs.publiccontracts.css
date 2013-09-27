@@ -1,17 +1,77 @@
+.tabs  {
+   margin: 2em 0 0 0;
+   border-bottom: 1px solid #666;
+}
 .tabs li {
-        list-style:none;
-        display:inline !important;
-      }
+    display: inline !important;
+    list-style: none outside none;
+}
+.tabs a {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+    padding:5px 10px;
+    background:#ccc;
+   color:#333;
+}
+.tabs a.active, .tabs a:hover {
+     background:#666;
+     color:#fff;
+}
 
-      .tabs a {
-        padding:5px 10px !important;
-        display:inline-block !important;
-        background:#666 !important;
-        color:#fff !important;
-        text-decoration:none !important;
-      }
 
-      .tabs a.active {
-        background:#fff !important;
-        color:#000 !important;
-      }
+#tab-1, #tab-2, #tab-3, #tab-4 {
+   margin-top: 2em;
+}
+
+.contract-dates dt, .contract-information dt, .contract-files dt{
+    float: left;
+    margin-right: 1em;
+    background: #FFF;
+    border-radius: 5px;
+    padding: 3px 10px;
+    border: 1px solid #e0e0e0;
+    border-right:  2px solid #e0e0e0;
+    border-bottom:  2px solid #e0e0e0;
+    text-transform: uppercase;
+    font-size: 80%;
+    color: #828282;
+    font-weight: normal;
+}
+.contract-dates dd, .contract-information dd, .contract-files dd{
+    line-height: 160%;
+}
+
+
+.contract-dates dd:last-child{
+    font-weight: bold;
+}
+.contract-dates , .contract-information, .contract-files{
+    margin: 1em 0;
+    padding: 10px 10px 0px 10px;
+    background: #efefef;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    border-right:  2px solid #e0e0e0;
+    border-bottom:  2px solid #e0e0e0;
+}
+
+
+h2#file-number{
+    background: none repeat scroll 0 0 #666;
+    border: 1px solid #333;
+    border-right:  2px solid #333;
+    border-bottom:  2px solid #333;
+    display: inline-block;
+    font-size: 70%;
+    padding: 0px 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: #fff;
+}
+
+h2#file-number span:last-child{
+    font-size: 220%;
+    margin-left: 10px;
+}

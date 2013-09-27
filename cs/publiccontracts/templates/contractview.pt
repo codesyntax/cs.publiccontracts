@@ -20,6 +20,8 @@
       <span tal:content="context/file_number"></span>
     </h2>
 
+    <a class="btn btn-primary pull-right" tal:attributes="href string:${context/aq_parent/absolute_url}/kontaktu-formularioa">Baldintza teknikoak eskatu</a>
+
     <dl class="contract-dates" tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime">
 
       <tal:define define="published_date context/EffectiveDate"
@@ -69,30 +71,40 @@
 
     <tal:define define="files context/files" tal:condition="files">
     <h2 i18n:translate="files">Files</h2>
-     <tal:file repeat="file files">
 
-     <tal:filecontent
-                     tal:define="content_type file/file/contentType|nothing;
-                                 v python:file.restrictedTraverse('contenttype_utils');">
-            <p>
-                <a tal:attributes="href string:${file/absolute_url}/@@download/file/${file/file/filename}">
-                    <img tal:attributes="src python: v.getMimeTypeIcon(file.file);
-                                         alt content_type;" border="0"  />
-                    <tal:name tal:content="file/file/filename" >Filename</tal:name>
-                </a>
-                <span class="discreet"
-                      tal:define="size file/file/getSize;
-                                  kb python:size/1024">
-                      &mdash; <span tal:replace="kb" /> KB</span>
-            </p>
+     <dl class="contract-files">
 
-            <div tal:condition="python: content_type.startswith('text')">
-                <h2 i28n:domain="plone" i18n:translate="heading_file_contents">File contents</h2>
-                <pre tal:content="file/file/data|nothing" />
-            </div>
+     <tal:repeat repeat="file files">
+     <dt tal:content="file/Title">
+    </dt>
 
-      </tal:filecontent>
-      </tal:file>
+     <dd>
+             <tal:filecontent
+                             tal:define="content_type file/file/contentType|nothing;
+                                         v python:file.restrictedTraverse('contenttype_utils');">
+                    <p>
+                        <a tal:attributes="href string:${file/absolute_url}/@@download/file/${file/file/filename}">
+                            <img tal:attributes="src python: v.getMimeTypeIcon(file.file);
+                                                 alt content_type;" border="0"  />
+                            <tal:name tal:content="file/file/filename" >Filename</tal:name>
+                        </a>
+                        <span class="discreet"
+                              tal:define="size file/file/getSize;
+                                          kb python:size/1024">
+                              &mdash; <span tal:replace="kb" /> KB</span>
+                    </p>
+
+                    <div tal:condition="python: content_type.startswith('text')">
+                        <h2 i28n:domain="plone" i18n:translate="heading_file_contents">File contents</h2>
+                        <pre tal:content="file/file/data|nothing" />
+                    </div>
+
+              </tal:filecontent>
+    </dd>
+
+    </tal:repeat>
+
+    </dl>
     </tal:define>
 
 </metal:content-core>

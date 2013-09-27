@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2013-09-26 11:31+0000\n"
-"PO-Revision-Date: 2013-09-26 13:32+0100\n"
+"PO-Revision-Date: 2013-09-27 09:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,7 @@ msgstr "Azken eguna"
 
 #: templates/contractsfolderview.pt:65
 msgid "published_date"
-msgstr "Publikazio data"
+msgstr "Argitaratze data"
 
 #. Default: "Title"
 #: templates/contractsfolderview.pt:49
