@@ -37,33 +37,36 @@
     </tal:define>
     </dl>
 
-    <dl class="contract-information">
+    <dl class="contract-information"
+        tal:define="file_type_string context/file_type_string;
+                    file_procedure_string context/file_procedure_string;
+                    file_processing context/file_processing_string;
+                    file_state context/file_state_string;
+                    info context/info;
+                    "
+        tal:condition="file_type_string|file_procedure_string|file_processing|file_state|info">
 
-      <tal:define define="file_type_string context/file_type_string"
-                  condition="file_type_string">
+      <tal:define condition="file_type_string">
         <dt i18n:translate="file_type">file_type</dt>
         <dd tal:content="file_type_string"></dd>
       </tal:define>
 
-      <tal:define define="file_procedure_string context/file_procedure_string"
-                  condition="file_procedure_string">
+      <tal:define condition="file_procedure_string">
         <dt i18n:translate="file_procedure_string">file_procedure</dt>
         <dd tal:content="file_procedure_string"></dd>
       </tal:define>
 
-      <tal:define define="file_processing context/file_processing_string"
-                  condition="file_processing">
+      <tal:define condition="file_processing">
         <dt i18n:translate="file_processing">file_processing</dt>
         <dd tal:content="file_processing"></dd>
       </tal:define>
 
-      <tal:define define="file_state context/file_state_string"
-                  condition="file_state">
+      <tal:define condition="file_state">
         <dt i18n:translate="file_state">file_state</dt>
         <dd tal:content="file_state"></dd>
       </tal:define>
 
-      <tal:condition tal:condition="context/info">
+      <tal:condition tal:condition="info">
       <dt i18n:translate="info">info</dt>
       <dd tal:content="structure context/info/output"></dd>
     </tal:condition>
