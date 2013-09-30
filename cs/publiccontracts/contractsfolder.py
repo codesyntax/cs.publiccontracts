@@ -11,7 +11,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from zope.interface import Interface
 from plone.namedfile.field import NamedBlobFile
-
+from cs.publiccontracts.contract import IContract
 
 class IContractTypesRowSchema(Interface):
 
@@ -126,7 +126,7 @@ class ContractsFolderView(grok.View):
         contracts_path = '/'.join(context.getPhysicalPath())
         if not states_dict:
             state_dict = {}
-            contracts = catalog(portal_type="Contract",
+            contracts = catalog(object_provides=IContract.__identifier__,
                                 review_state="published",
                                 path=contracts_path)
             state_dict['contracts'] = contracts
@@ -138,7 +138,7 @@ class ContractsFolderView(grok.View):
         for state in states_dict:
             state_dict = {}
             state_value = state['value']
-            contracts = catalog(portal_type="Contract",
+            contracts = catalog(object_provides=IContract.__identifier__,
                                 review_state="published",
                                 contract_state=state_value,
                                 path=contracts_path)
