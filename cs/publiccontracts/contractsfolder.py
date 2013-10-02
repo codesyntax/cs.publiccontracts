@@ -12,6 +12,7 @@ from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from zope.interface import Interface
 from plone.namedfile.field import NamedBlobFile
 from cs.publiccontracts.contract import IContract
+from Products.Five import BrowserView
 
 
 class IContractTypesRowSchema(Interface):
@@ -117,13 +118,7 @@ class ContractsFolder(dexterity.Container):
 # interface with "/@@view" appended unless specified otherwise
 # using grok.name below.
 # This will make this view the default view for your content-type
-grok.templatedir('templates')
-
-
-class ContractsFolderView(grok.View):
-    grok.context(IContractsFolder)
-    grok.require('zope2.View')
-    grok.name('view')
+class ContractsFolderView(BrowserView):
 
     def contracts_dict(self):
 

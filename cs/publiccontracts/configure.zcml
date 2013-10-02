@@ -5,6 +5,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="cs.publiccontracts">
 
   <!-- Include configuration for dependencies listed in setup.py -->
@@ -26,6 +27,20 @@
       directory="profiles/default"
       description="Content-types for cs.publiccontracts. Public Contracs Product"
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <browser:page
+      for=".contract.IContract"
+      name="view"
+      template="templates/contractview.pt"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for=".contractsfolder.IContractsFolder"
+      name="view"
+      template="templates/contractsfolderview.pt"
+      permission="zope.Public"
       />
 
   <!-- -*- extra stuff goes here -*- -->

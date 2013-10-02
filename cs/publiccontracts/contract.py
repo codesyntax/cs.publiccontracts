@@ -143,11 +143,3 @@ class Contract(dexterity.Container):
 # interface with "/@@view" appended unless specified otherwise
 # using grok.name below.
 # This will make this view the default view for your content-type
-
-grok.templatedir('templates')
-
-
-class ContractView(grok.View):
-    grok.context(IContract)
-    grok.require('zope2.View')
-    grok.name('view')

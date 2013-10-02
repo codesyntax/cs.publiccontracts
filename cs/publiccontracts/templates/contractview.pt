@@ -20,8 +20,6 @@
       <span tal:content="context/file_number"></span>
     </h2>
 
-    <a class="btn btn-primary pull-right" tal:attributes="href string:${context/aq_parent/absolute_url}/kontaktu-formularioa">Baldintza teknikoak eskatu</a>
-
     <dl class="contract-dates" tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime">
 
       <tal:define define="published_date context/EffectiveDate"
