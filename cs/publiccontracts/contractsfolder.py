@@ -120,6 +120,7 @@ class ContractsFolder(dexterity.Container):
 # This will make this view the default view for your content-type
 class ContractsFolderView(BrowserView):
 
+
     def contracts_dict(self):
 
         context = aq_inner(self.context)

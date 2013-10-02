@@ -39,6 +39,7 @@
   <browser:page
       for=".contractsfolder.IContractsFolder"
       name="view"
+      class=".contractsfolder.ContractsFolderView"
       template="templates/contractsfolderview.pt"
       permission="zope.Public"
       />
