@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-26 11:31+0000\n"
-"PO-Revision-Date: 2013-09-26 13:31+0100\n"
+"POT-Creation-Date: 2013-10-02 08:34+0000\n"
+"PO-Revision-Date: 2013-10-02 10:35+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,197 +15,195 @@ msgstr ""
 "Domain: DOMAIN\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ./profiles/default/types/Contract.xml
+#: profiles/default/types/Contract.xml
 msgid "Contract"
 msgstr "Contrato"
 
-#: ./contract.py:32
+#: contract.py:37
 msgid "Contract Procedure"
 msgstr "Procedimiento"
 
-#: ./contractsfolder.py:65
+#: contractsfolder.py:69
 msgid "Contract Procedures"
 msgstr "Procedimientos"
 
-#: ./contract.py:38
+#: contract.py:44
 msgid "Contract Processing"
 msgstr "Tramitación"
 
-#: ./contractsfolder.py:74
+#: contractsfolder.py:78
 msgid "Contract Processings"
 msgstr "Tramitaciones"
 
-#: ./contract.py:44
+#: contract.py:51
 msgid "Contract State"
 msgstr "Estado"
 
-#: ./contractsfolder.py:56
+#: contractsfolder.py:60
 msgid "Contract States"
 msgstr "Estados"
 
-#: ./contract.py:26
+#: contract.py:30
 msgid "Contract Type"
 msgstr "Tipo"
 
-#: ./contractsfolder.py:47
+#: contractsfolder.py:51
 msgid "Contract Types"
 msgstr "Tipos"
 
-#: ./contract.py:21
+#: contract.py:24
 msgid "Contract file number"
 msgstr "Número de expediente"
 
-#: ./contract.py:56
+#: contract.py:64
 msgid "Contract information"
 msgstr "Información adicional"
 
-#: ./contractsfolder.py:28
+#: contractsfolder.py:31
 msgid "Contract procedure name"
 msgstr "Nombre procedimiento"
 
-#: ./contractsfolder.py:27
+#: contractsfolder.py:30
 msgid "Contract procedure value"
 msgstr "Valor tramitación"
 
-#: ./contractsfolder.py:33
+#: contractsfolder.py:37
 msgid "Contract processing name"
 msgstr "Nombre tramitación"
 
-#: ./contractsfolder.py:32
+#: contractsfolder.py:36
 msgid "Contract processing value"
 msgstr "Valor tramitación"
 
-#: ./contractsfolder.py:23
+#: contractsfolder.py:25
 msgid "Contract state name"
 msgstr "Nombre estado"
 
-#: ./contractsfolder.py:22
+#: contractsfolder.py:24
 msgid "Contract state value"
 msgstr "Valor estado"
 
-#: ./contractsfolder.py:18
+#: contractsfolder.py:19
 msgid "Contract type name"
 msgstr "Nombre tipo"
 
-#: ./contractsfolder.py:17
+#: contractsfolder.py:18
 msgid "Contract type value"
 msgstr "Valor Tipo"
 
-#: ./profiles/default/types/ContractsFolder.xml
+#: profiles/default/types/ContractsFolder.xml
 msgid "Contracts Folder"
 msgstr "Perfil de contratante"
 
-#: ./profiles/default/types/ContractsFolder.xml
+#: profiles/default/types/ContractsFolder.xml
 msgid "ContractsFolder"
 msgstr "Perfil de contratante"
 
-#: ./contractsfolder.py:66
+#: contractsfolder.py:70
 msgid "Enter here the contract Procedures"
 msgstr "Introduzca los diferentes procedimientos"
 
-#: ./contractsfolder.py:75
+#: contractsfolder.py:79
 msgid "Enter here the contract Processings"
 msgstr "Introduzca las diferentes tramitaciones"
 
-#: ./contractsfolder.py:57
+#: contractsfolder.py:61
 msgid "Enter here the contract states"
 msgstr "Introduzca los diferentes estados"
 
-#: ./contractsfolder.py:48
+#: contractsfolder.py:52
 msgid "Enter here the contract types"
 msgstr "Introduzca los diferentes tipos"
 
-#: ./contract.py:20
+#: contract.py:23
 msgid "File Number"
 msgstr "Número de expediente"
 
-#: ./contract.py:31
+#: contract.py:36
 msgid "File Procedure"
 msgstr "Procedimiento"
 
-#: ./contract.py:37
+#: contract.py:43
 msgid "File Processing"
 msgstr "Tramitación"
 
-#: ./contract.py:43
+#: contract.py:50
 msgid "File State"
 msgstr "Estado"
 
-#: ./contract.py:25
+#: contract.py:29
 msgid "File Type"
 msgstr "Tipo"
 
-#: ./contractsfolder.py:82
+#: contractsfolder.py:86
 msgid "Generic File"
 msgstr "Instrucciones para la contratación pública"
 
-#: ./contract.py:50
+#: contract.py:58
 msgid "Last Date"
 msgstr "Último día"
 
-#: ./contract.py:51
+#: contract.py:59
 msgid "Last date for the submission of tenders"
 msgstr "Último día para la presentación de las propuestas"
 
-#: ./profiles/default/types/Contract.xml
+#: profiles/default/types/Contract.xml
 msgid "Public Contract"
 msgstr "Contrato"
 
-#: ./templates/contractsfolderview.pt:45
-#: ./templates/contractview.pt:19
+#: templates/contractsfolderview.pt:53
 msgid "file_number"
 msgstr "Número de expediente"
 
-#: ./templates/contractsfolderview.pt:57
-#: ./templates/contractview.pt:25
+#. Default: "File number:"
+#: templates/contractview.pt:19
+msgid "file_number_title"
+msgstr "Número de expediente:"
+
+#: templates/contractsfolderview.pt:65 templates/contractview.pt:55
 msgid "file_procedure"
 msgstr "Procedimiento"
 
-#: ./templates/contractsfolderview.pt:61
-#: ./templates/contractview.pt:28
+#: templates/contractsfolderview.pt:69 templates/contractview.pt:60
 msgid "file_processing"
 msgstr "Tramitación"
 
-#: ./templates/contractview.pt:31
+#: templates/contractview.pt:65
 msgid "file_state"
 msgstr "Estado"
 
-#: ./templates/contractsfolderview.pt:53
-#: ./templates/contractview.pt:22
+#: templates/contractsfolderview.pt:61 templates/contractview.pt:50
 msgid "file_type"
 msgstr "Tipo"
 
 #. Default: "Files"
-#: ./templates/contractview.pt:44
+#: templates/contractview.pt:76
 msgid "files"
 msgstr "Ficheros"
 
 #. Default: "Generic File"
-#: ./templates/contractsfolderview.pt:19
+#: templates/contractsfolderview.pt:21
 msgid "generic-file-text"
 msgstr "Instrucciones para la contratación pública"
 
 #. Default: "File contents"
-#: ./templates/contractview.pt:63
+#: templates/contractview.pt:101
 msgid "heading_file_contents"
 msgstr ""
 
-#: ./contract.py:55
-#: ./templates/contractview.pt:38
+#: contract.py:63 templates/contractview.pt:70
 msgid "info"
 msgstr "Información adicional"
 
-#: ./templates/contractsfolderview.pt:69
-#: ./templates/contractview.pt:34
+#: templates/contractsfolderview.pt:77 templates/contractview.pt:35
 msgid "last_date"
 msgstr "Último día"
 
-#: ./templates/contractsfolderview.pt:65
+#: templates/contractsfolderview.pt:73 templates/contractview.pt:29
 msgid "published_date"
 msgstr "Fecha publicación"
 
 #. Default: "Title"
-#: ./templates/contractsfolderview.pt:49
+#: templates/contractsfolderview.pt:57
 msgid "title"
 msgstr "Título"
-

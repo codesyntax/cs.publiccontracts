@@ -13,6 +13,7 @@ from zope.interface import Interface
 from plone.namedfile.field import NamedBlobFile
 from cs.publiccontracts.contract import IContract
 
+
 class IContractTypesRowSchema(Interface):
 
     value = schema.TextLine(title=_(u'Contract type value'))
@@ -48,52 +49,60 @@ class IContractsFolder(form.Schema, IImageScaleTraversable):
     # models/contractsfolder.xml to define the content type
     # and add directives here as necessary.
     form.widget(types=DataGridFieldFactory)
-    types = schema.List(title=_(u'Contract Types'),
+    types = schema.List(
+        title=_(u'Contract Types'),
         description=_(u'Enter here the contract types'),
         required=False,
-        value_type=DictRow(title=_(u'Contract Types'),
-                          schema=IContractTypesRowSchema,
-                          required=False)
+        value_type=DictRow(
+            title=_(u'Contract Types'),
+            schema=IContractTypesRowSchema,
+            required=False)
         )
 
     form.widget(states=DataGridFieldFactory)
-    states = schema.List(title=_(u'Contract States'),
+    states = schema.List(
+        title=_(u'Contract States'),
         description=_(u'Enter here the contract states'),
         required=False,
-        value_type=DictRow(title=_(u'Contract States'),
-                          schema=IContractStatesRowSchema,
-                          required=False)
+        value_type=DictRow(
+            title=_(u'Contract States'),
+            schema=IContractStatesRowSchema,
+            required=False)
         )
 
     form.widget(procedures=DataGridFieldFactory)
-    procedures = schema.List(title=_(u'Contract Procedures'),
+    procedures = schema.List(
+        title=_(u'Contract Procedures'),
         description=_(u'Enter here the contract Procedures'),
         required=False,
-        value_type=DictRow(title=_(u'Contract Procedures'),
-                          schema=IContractProceduresRowSchema,
-                          required=False)
+        value_type=DictRow(
+            title=_(u'Contract Procedures'),
+            schema=IContractProceduresRowSchema,
+            required=False)
         )
 
     form.widget(processings=DataGridFieldFactory)
-    processings = schema.List(title=_(u'Contract Processings'),
+    processings = schema.List(
+        title=_(u'Contract Processings'),
         description=_(u'Enter here the contract Processings'),
         required=False,
-        value_type=DictRow(title=_(u'Contract Processings'),
-                          schema=IContractProcessingsRowSchema,
-                          required=False)
+        value_type=DictRow(
+            title=_(u'Contract Processings'),
+            schema=IContractProcessingsRowSchema,
+            required=False)
         )
 
-    generic_file = NamedBlobFile(title=_(u'Generic File'),
-                           required=False,
-     )
-
-
+    generic_file = NamedBlobFile(
+        title=_(u'Generic File'),
+        required=False,
+        )
 
 
 # Custom content-type class; objects created for this content type will
 # be instances of this class. Use this class to add content-type specific
 # methods and properties. Put methods that are mainly useful for rendering
 # in separate view classes.
+
 class ContractsFolder(dexterity.Container):
     grok.implements(IContractsFolder)
     # Add your class methods and properties here
@@ -108,7 +117,6 @@ class ContractsFolder(dexterity.Container):
 # interface with "/@@view" appended unless specified otherwise
 # using grok.name below.
 # This will make this view the default view for your content-type
-
 grok.templatedir('templates')
 
 
@@ -148,38 +156,6 @@ class ContractsFolderView(grok.View):
 
             states_list.append(state_dict)
         return states_list
-
-    def has_states(self):
-        context = aq_inner(self.context)
-        states_dict = context.states
-        if states_dict:
-            return True
-        else:
-            return False
-
-    def has_procedures(self):
-        context = aq_inner(self.context)
-        procedures_dict = context.procedures
-        if procedures_dict:
-            return True
-        else:
-            return False
-
-    def has_processings(self):
-        context = aq_inner(self.context)
-        processings_dict = context.processings
-        if processings_dict:
-            return True
-        else:
-            return False
-
-    def has_types(self):
-        context = aq_inner(self.context)
-        types_dict = context.types
-        if types_dict:
-            return True
-        else:
-            return False
 
 
 class ContractTypesVocabulary(object):

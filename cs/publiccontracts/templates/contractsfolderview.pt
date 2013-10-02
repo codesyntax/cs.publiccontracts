@@ -28,10 +28,10 @@
 
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core" tal:define="contracts_dict view/contracts_dict;
-                                                              has_states view/has_states;
-                                                              has_procedures view/has_procedures;
-                                                              has_processings view/has_processings;
-                                                              has_types view/has_types;
+                                                              has_states context/states;
+                                                              has_procedures context/procedures;
+                                                              has_processings context/processings;
+                                                              has_types context/types;
   toLocalizedTime nocall:here/@@plone/toLocalizedTime">
 
   <ul class="tabs" tal:condition="has_states">
