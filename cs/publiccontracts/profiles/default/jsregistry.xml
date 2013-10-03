@@ -21,7 +21,7 @@
  <javascript
     id="++resource++cs.publiccontracts/cs.publiccontracts.js"
     cacheable="False" compression="safe" cookable="False"
-    enabled="True" expression="python:context.portal_type in ['Contract','ContractsFolder']"  inline="False"/>
+    enabled="True" expression="python:context.portal_type=='ContractsFolder'"  inline="False"/>
 
 
 </object>
