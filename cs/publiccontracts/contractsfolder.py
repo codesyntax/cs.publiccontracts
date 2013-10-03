@@ -159,9 +159,10 @@ class ContractTypesVocabulary(object):
 
     def __call__(self, context=None):
         """ Vocabularu factory for all contract types"""
+        putils = getToolByName(context, 'plone_utils')
         contracts_folder = context
         contracts_types = contracts_folder.types
-        items = [(i['name'], i['value']) for i in contracts_types]
+        items = [(putils.normalizeString(i['name']), i['value']) for i in contracts_types]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractTypesVocabulary, name=u'contract_types')
@@ -172,9 +173,10 @@ class ContractProceduresVocabulary(object):
 
     def __call__(self, context=None):
         """ Vocabularu factory for all contract types"""
+        putils = getToolByName(context, 'plone_utils')
         contracts_folder = context
         contracts_procedures = contracts_folder.procedures
-        items = [(i['name'], i['value']) for i in contracts_procedures]
+        items = [(putils.normalizeString(i['name']), i['value']) for i in contracts_procedures]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractProceduresVocabulary, name=u'contract_procedures')
@@ -185,9 +187,10 @@ class ContractProcessingsVocabulary(object):
 
     def __call__(self, context=None):
         """ Vocabularu factory for all contract types"""
+        putils = getToolByName(context, 'plone_utils')
         contracts_folder = context
         contracts_processings = contracts_folder.processings
-        items = [(i['name'], i['value']) for i in contracts_processings]
+        items = [(putils.normalizeString(i['name']), i['value']) for i in contracts_processings]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractProcessingsVocabulary, name=u'contract_processings')
@@ -198,9 +201,10 @@ class ContractStatesVocabulary(object):
 
     def __call__(self, context=None):
         """ Vocabularu factory for all contract types"""
+        putils = getToolByName(context, 'plone_utils')
         contracts_folder = context
         contracts_states = contracts_folder.states
-        items = [(i['name'], i['value']) for i in contracts_states]
+        items = [(putils.normalizeString(i['name']), i['value']) for i in contracts_states]
         return SimpleVocabulary.fromItems(items)
 
 grok.global_utility(ContractStatesVocabulary, name=u'contract_states')
