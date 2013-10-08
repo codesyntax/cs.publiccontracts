@@ -1,10 +1,10 @@
 from Acquisition import aq_parent
+from cs.publiccontracts import MessageFactory as _
 from five import grok
+from plone.app.textfield import RichText
 from plone.directives import dexterity, form
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
-from cs.publiccontracts import MessageFactory as _
-from plone.app.textfield import RichText
 from zope.interface import alsoProvides
 # Interface class; used to define content-type schema.
 

@@ -6,7 +6,7 @@ version = '1.0'
 setup(name='cs.publiccontracts',
       version=version,
       description="Public Contracs Product",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -26,20 +26,14 @@ setup(name='cs.publiccontracts',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          #'five.grok',
-          #'plone.app.dexterity [grok, relations]',
-          #'plone.namedfile [blobs]',
+          'five.grok',
+          'plone.app.dexterity [grok, relations]',
+          'plone.namedfile [blobs]',
+          'collective.z3cform.datagridfield'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
       target = plone
-      """,
-      # The next two lines may be deleted after you no longer need
-      # addcontent support from paster and before you distribute
-      # your package.
-      setup_requires=["PasteScript"],
-      paster_plugins = ["ZopeSkel"],
-
-      )
+      """,)

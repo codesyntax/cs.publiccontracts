@@ -1,18 +1,18 @@
 from Acquisition import aq_inner
-from Products.CMFCore.utils import getToolByName
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.interface import implements
-from zope.schema.interfaces import IVocabularyFactory
-from zope import schema
+from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from cs.publiccontracts import MessageFactory as _
+from cs.publiccontracts.contract import IContract
 from five import grok
 from plone.directives import dexterity, form
-from plone.namedfile.interfaces import IImageScaleTraversable
-from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
-from zope.interface import Interface
 from plone.namedfile.field import NamedBlobFile
-from cs.publiccontracts.contract import IContract
+from plone.namedfile.interfaces import IImageScaleTraversable
+from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from zope import schema
+from zope.interface import implements
+from zope.interface import Interface
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 class IContractTypesRowSchema(Interface):
