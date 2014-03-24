@@ -132,6 +132,8 @@ class ContractsFolderView(BrowserView):
             state_dict = {}
             contracts = catalog(object_provides=IContract.__identifier__,
                                 review_state="published",
+                                sort_on="effective",
+                                sort_order="reverse",
                                 path=contracts_path)
             state_dict['contracts'] = contracts
             state_dict['title'] = ''
@@ -145,6 +147,8 @@ class ContractsFolderView(BrowserView):
             contracts = catalog(object_provides=IContract.__identifier__,
                                 review_state="published",
                                 contract_state=state_value,
+                                sort_on="effective",
+                                sort_order="reverse",
                                 path=contracts_path)
             state_dict['title'] = state['name']
             state_dict['value'] = state['value']
