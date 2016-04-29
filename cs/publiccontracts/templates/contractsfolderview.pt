@@ -94,7 +94,9 @@
         </td>
         <td tal:content="python:toLocalizedTime(contract_obj.EffectiveDate())">
         </td>
-        <td tal:content="python:toLocalizedTime(contract_obj.last_date)">
+        <td>
+          <tal:replace tal:content="python:toLocalizedTime(contract_obj.last_date)" tal:condition="contract_obj/last_date">
+          </tal:replace>
         </td>
       </tal:define>
       </tr>
