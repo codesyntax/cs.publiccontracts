@@ -42,7 +42,7 @@
                     file_state context/file_state_string;
                     info context/info;
                     "
-        tal:condition="file_type_string|file_procedure_string|file_processing|file_state|info">
+        tal:condition="python:file_type_string or file_procedure_string or file_processing or file_state or info">
 
       <tal:define condition="file_type_string">
         <dt i18n:translate="file_type">file_type</dt>
@@ -66,9 +66,22 @@
 
       <tal:condition tal:condition="info">
       <dt i18n:translate="info">info</dt>
-      <dd tal:content="structure context/info/output"></dd>
+      <dd class="info" tal:content="structure context/info/output"></dd>
     </tal:condition>
     </dl>
+
+    <div class="dates" tal:condition="context/dates">
+        <h2 i18n:translate="dates">Dates</h2>
+        <dl class="contract-extra-dates">
+            <tal:repeat tal:repeat="date context/dates">
+            <dt tal:content="date/title"></dt>
+            <dd>
+              <tal:replace tal:replace="python:context.toLocalizedTime(date['day'])">
+              </tal:replace>
+            </dd>
+            </tal:repeat>
+        </dl>
+    </div>
 
     <tal:define define="files context/files" tal:condition="files">
     <h2 i18n:translate="files">Files</h2>

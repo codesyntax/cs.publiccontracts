@@ -1,3 +1,4 @@
+from datetime import datetime
 from Acquisition import aq_parent
 from cs.publiccontracts import MessageFactory as _
 from five import grok
@@ -7,7 +8,29 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
 from zope.interface import alsoProvides
 # Interface class; used to define content-type schema.
+from zope.interface import Interface
+try:
+    from collective.z3cform.datagridfield import DictRow
+    from collective.z3cform.datagridfield.datagridfield import \
+        DataGridFieldFactory
+    DictRow  # pyflakes
+    DataGridFieldFactory  # pyflakes
+    USE_DATAGRID = True
+except ImportError:
+    from zope.schema import Object as DictRow
+    DataGridFieldFactory = None
+    USE_DATAGRID = False
 
+class IDatesRowSchema(Interface):
+    title = schema.TextLine(
+        title=_(u'Date title'),
+        description=_(u'Date title'),
+        required=False,
+        )
+    day = schema.Datetime(
+        title=_(u'Day'),
+        required=False,
+        )
 
 class IContract(form.Schema, IImageScaleTraversable):
     """
@@ -65,6 +88,13 @@ class IContract(form.Schema, IImageScaleTraversable):
         required=False,
         )
 
+    if DataGridFieldFactory is not None:
+        form.widget(dates=DataGridFieldFactory)
+    dates = schema.List(title=u"Dates",
+                               required=False,
+        value_type=DictRow(title=u"Dates", schema=IDatesRowSchema),
+        default=[{'title': '', 'day': datetime.now()}])
+
 try:
     from plone.multilingualbehavior.interfaces import ILanguageIndependentField
     alsoProvides(IContract['file_number'], ILanguageIndependentField)
@@ -119,7 +149,6 @@ class Contract(dexterity.Container):
         return None
 
     def file_state_string(self):
-
         file_state_value = self.file_state
         contracts_folder = aq_parent(self)
         contracts_folder_states = contracts_folder.states
