@@ -93,7 +93,7 @@ class IContract(form.Schema, IImageScaleTraversable):
     dates = schema.List(title=u"Dates",
                                required=False,
         value_type=DictRow(title=u"Dates", schema=IDatesRowSchema),
-        default=[{'title': '', 'day': datetime.now()}])
+        default=[])
 
 try:
     from plone.multilingualbehavior.interfaces import ILanguageIndependentField
