@@ -28,10 +28,10 @@
         <dd tal:content="python:toLocalizedTime(published_date)"></dd>
      </tal:define>
 
-      <tal:define define="last_date context/last_date"
+      <tal:define tal:define="has_hour python:context.has_hour(context.last_date);last_date context/last_date"
                   condition="last_date">
         <dt i18n:translate="last_date">last_date</dt>
-        <dd tal:content="python:toLocalizedTime(last_date )"></dd>
+        <dd tal:content="python:toLocalizedTime(last_date, long_format=has_hour)"></dd>
     </tal:define>
     </dl>
 
@@ -75,8 +75,8 @@
         <dl class="contract-extra-dates">
             <tal:repeat tal:repeat="date context/dates">
             <dt tal:content="date/title"></dt>
-            <dd>
-              <tal:replace tal:replace="python:context.toLocalizedTime(date['day'], long_format=1)">
+            <dd tal:define="has_hour python:context.has_hour(date['day'])">
+              <tal:replace tal:replace="python:context.toLocalizedTime(date['day'], long_format=has_hour)">
               </tal:replace>
             </dd>
             </tal:repeat>

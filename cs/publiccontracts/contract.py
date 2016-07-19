@@ -1,3 +1,4 @@
+from plone.app.event.base import date_speller
 from datetime import datetime
 from Acquisition import aq_parent
 from cs.publiccontracts import MessageFactory as _
@@ -163,6 +164,9 @@ class Contract(dexterity.Container):
 
     def contract_state_index(self):
         return self.file_state
+
+    def has_hour(self, date):
+        return date_speller(self, date)['hour'] or date_speller(self, date)['minute']
 
 # View class
 # The view will automatically use a similarly named template in
