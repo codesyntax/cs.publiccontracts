@@ -76,7 +76,7 @@
             <tal:repeat tal:repeat="date context/dates">
             <dt tal:content="date/title"></dt>
             <dd>
-              <tal:replace tal:replace="python:context.toLocalizedTime(date['day'])">
+              <tal:replace tal:replace="python:context.toLocalizedTime(date['day'], long_format=1)">
               </tal:replace>
             </dd>
             </tal:repeat>
