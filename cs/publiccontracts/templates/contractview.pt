@@ -72,7 +72,7 @@
 
     <div class="dates" tal:condition="context/dates">
         <h2 i18n:translate="dates">Dates</h2>
-        <dl class="contract-extra-dates">
+        <dl class="contract-dates">
             <tal:repeat tal:repeat="date context/dates">
             <dt tal:content="date/title"></dt>
             <dd tal:define="has_hour python:context.has_hour(date['day'])">
@@ -126,4 +126,3 @@
 
 </body>
 </html>
-
