@@ -1,5 +1,6 @@
 from plone.app.event.base import date_speller
 from datetime import datetime
+from collective import dexteritytextindexer
 from Acquisition import aq_parent
 from cs.publiccontracts import MessageFactory as _
 from five import grok
@@ -43,6 +44,7 @@ class IContract(form.Schema, IImageScaleTraversable):
     # models/contract.xml to define the content type
     # and add directives here as necessary.
 
+    dexteritytextindexer.searchable('file_number')
     file_number = schema.TextLine(
         title=_(u'File Number'),
         description=_(u'Contract file number'),
