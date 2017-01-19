@@ -85,6 +85,7 @@ class IContract(form.Schema, IImageScaleTraversable):
         required=False,
         )
 
+    dexteritytextindexer.searchable('file_number')
     info = RichText(
         title=_(u'info'),
         description=_(u'Contract information'),
