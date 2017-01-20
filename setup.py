@@ -30,7 +30,7 @@ setup(name='cs.publiccontracts',
           'plone.app.dexterity [grok, relations]',
           'plone.namedfile [blobs]',
           'collective.z3cform.datagridfield',
-          'collective.dexterityindexer'
+          'collective.dexteritytextindexer'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
