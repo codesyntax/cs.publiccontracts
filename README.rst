@@ -16,7 +16,7 @@ project change it.
 Credits and legislation
 =======================
 
-- `Law 30/2007 of Public Sector Contracts (Ley 30/2007 de Contratos del Sector Público)`_
+- `Law 9/2017 of Public Sector Contracts (Ley 9/2017 de Contratos del Sector Público)`_
 
 
 Contributors
@@ -24,3 +24,5 @@ Contributors
 
 - Lur Ibargutxi <libargutxi@codesyntax.com>, Main developer
 
+
+.. _`Law 9/2017 of Public Sector Contracts (Ley 9/2017 de Contratos del Sector Público)`: https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902
