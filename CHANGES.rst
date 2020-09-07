@@ -4,7 +4,7 @@ Changelog
 2.0a1 (unreleased)
 ------------------
 
-- This and that.
+- Update to python3 and Plone 5.2
 
 1.0 (2017-01-20)
 ------------------
