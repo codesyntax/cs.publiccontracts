@@ -16,17 +16,16 @@ class ContractTypesVocabularyIntegrationTest(unittest.TestCase):
 
     def setUp(self):
         """Custom shared utility setup for tests."""
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
     def test_vocab_contract_types_vocabulary(self):
-        vocab_name = 'cs.publiccontracts.ContractTypesVocabulary'
+        vocab_name = "cs.publiccontracts.ContractTypesVocabulary"
         factory = getUtility(IVocabularyFactory, vocab_name)
         self.assertTrue(IVocabularyFactory.providedBy(factory))
 
         vocabulary = factory(self.portal)
         self.assertTrue(IVocabularyTokenized.providedBy(vocabulary))
         self.assertEqual(
-            vocabulary.getTerm('sony-a7r-iii').title,
-            _(u'Sony Aplha 7R III'),
+            vocabulary.getTerm("sony-a7r-iii").title, _(u"Sony Aplha 7R III"),
         )
