@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="cs.publiccontracts">
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <utility
+        component=".contract_types_vocabulary.ContractTypesVocabularyFactory"
+        name="cs.publiccontracts.ContractTypesVocabulary"
+    />
+
+
+</configure>
