@@ -5,6 +5,12 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".contract_procedures_vocabulary.ContractProceduresVocabularyFactory"
+        name="cs.publiccontracts.ContractProceduresVocabulary"
+    />
+
+
+    <utility
         component=".contract_types_vocabulary.ContractTypesVocabularyFactory"
         name="cs.publiccontracts.ContractTypesVocabulary"
     />
