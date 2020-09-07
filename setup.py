@@ -1,15 +1,24 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 import os
 
-version = "1.0"
+long_description = "\n\n".join(
+    [
+        open("README.rst").read(),
+        open("CONTRIBUTORS.rst").read(),
+        open("CHANGES.rst").read(),
+    ]
+)
+
+
+version = "2.0dev"
 
 setup(
     name="cs.publiccontracts",
     version=version,
     description="Public Contracs Product",
-    long_description=open("README.rst").read()
-    + "\n"
-    + open(os.path.join("docs", "HISTORY.txt")).read(),
+    long_description=long_description,
     # Get more strings from
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -18,9 +27,9 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords="",
-    author="",
-    author_email="",
-    url="http://svn.plone.org/svn/collective/",
+    author="Lur Ibargutxi",
+    author_email="libargutxi@codesyntax.com",
+    url="https://github.com/codesyntax/cs.publiccontracts",
     license="GPL",
     packages=find_packages("src", exclude=["ez_setup"]),
     namespace_packages=["cs"],
@@ -29,11 +38,11 @@ setup(
     zip_safe=False,
     install_requires=[
         "setuptools",
-        "five.grok",
-        "plone.app.dexterity [grok, relations]",
-        "plone.namedfile [blobs]",
+        "plone.app.dexterity",
+        "plone.namedfile",
         "collective.z3cform.datagridfield",
-        "collective.dexteritytextindexer"
+        "collective.dexteritytextindexer",
+        "Plone > 4.99"
         # -*- Extra requirements: -*-
     ],
     entry_points="""

@@ -1,0 +1,149 @@
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  lang="en"
+  metal:use-macro="context/main_template/macros/master"
+  i18n:domain="cs.publiccontracts"
+>
+  <body>
+    <tal:comment tal:condition="nothing">
+      This is a sample view template. It will not be used for rendering the
+      content unless activated by creation of a view class with a matching name.
+    </tal:comment>
+
+    <metal:main fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+        <h2 id="file-number">
+          <span i18n:translate="file_number_title">File number:</span>
+          <span tal:content="context/file_number"></span>
+        </h2>
+
+        <dl
+          class="contract-dates"
+          tal:define="toLocalizedTime nocall:here/@@plone/toLocalizedTime"
+        >
+          <tal:define
+            define="published_date context/EffectiveDate"
+            condition="published_date"
+          >
+            <dt i18n:translate="published_date">published_date</dt>
+            <dd tal:content="python:toLocalizedTime(published_date)"></dd>
+          </tal:define>
+
+          <tal:define
+            tal:define="has_hour python:context.has_hour(context.last_date);last_date context/last_date"
+            condition="last_date"
+          >
+            <dt i18n:translate="last_date">last_date</dt>
+            <dd
+              tal:content="python:toLocalizedTime(last_date, long_format=has_hour)"
+            ></dd>
+          </tal:define>
+        </dl>
+
+        <dl
+          class="contract-information"
+          tal:define="file_type_string context/file_type_string;
+                    file_procedure_string context/file_procedure_string;
+                    file_processing context/file_processing_string;
+                    file_state context/file_state_string;
+                    info context/info;
+                    "
+          tal:condition="python:file_type_string or file_procedure_string or file_processing or file_state or info"
+        >
+          <tal:define condition="file_type_string">
+            <dt i18n:translate="file_type">file_type</dt>
+            <dd tal:content="file_type_string"></dd>
+          </tal:define>
+
+          <tal:define condition="file_procedure_string">
+            <dt i18n:translate="file_procedure">file_procedure</dt>
+            <dd tal:content="file_procedure_string"></dd>
+          </tal:define>
+
+          <tal:define condition="file_processing">
+            <dt i18n:translate="file_processing">file_processing</dt>
+            <dd tal:content="file_processing"></dd>
+          </tal:define>
+
+          <tal:define condition="file_state">
+            <dt i18n:translate="file_state">file_state</dt>
+            <dd tal:content="file_state"></dd>
+          </tal:define>
+
+          <tal:condition tal:condition="info">
+            <dt i18n:translate="info">info</dt>
+            <dd class="info" tal:content="structure context/info/output"></dd>
+          </tal:condition>
+        </dl>
+
+        <div class="dates" tal:condition="context/dates">
+          <h2 i18n:translate="dates">Dates</h2>
+          <dl class="contract-dates">
+            <tal:repeat tal:repeat="date context/dates">
+              <dt tal:content="date/title"></dt>
+              <dd tal:define="has_hour python:context.has_hour(date['day'])">
+                <tal:replace
+                  tal:replace="python:context.toLocalizedTime(date['day'], long_format=has_hour)"
+                >
+                </tal:replace>
+              </dd>
+            </tal:repeat>
+          </dl>
+        </div>
+
+        <tal:define define="files context/files" tal:condition="files">
+          <h2 i18n:translate="files">Files</h2>
+
+          <dl class="contract-files">
+            <tal:repeat repeat="file files">
+              <dt tal:content="file/Title"></dt>
+
+              <dd>
+                <tal:filecontent
+                  tal:define="content_type file/file/contentType|nothing;
+                                         v python:file.restrictedTraverse('contenttype_utils');"
+                >
+                  <p>
+                    <a
+                      tal:attributes="href string:${file/absolute_url}/@@download/file/${file/file/filename}"
+                    >
+                      <img
+                        tal:attributes="src python: v.getMimeTypeIcon(file.file);
+                                                 alt content_type;"
+                        border="0"
+                      />
+                      <tal:name tal:content="file/file/filename"
+                        >Filename</tal:name
+                      >
+                    </a>
+                    <span
+                      class="discreet"
+                      tal:define="size file/file/getSize;
+                                          kb python:size/1024"
+                    >
+                      &mdash; <span tal:replace="kb" /> KB</span
+                    >
+                  </p>
+
+                  <div tal:condition="python: content_type.startswith('text')">
+                    <h2
+                      i18n:domain="plone"
+                      i18n:translate="heading_file_contents"
+                    >
+                      File contents
+                    </h2>
+                    <pre tal:content="file/file/data|nothing" />
+                  </div>
+                </tal:filecontent>
+              </dd>
+            </tal:repeat>
+          </dl>
+        </tal:define>
+      </metal:content-core>
+    </metal:main>
+  </body>
+</html>

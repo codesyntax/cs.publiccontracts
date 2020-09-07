@@ -1,0 +1,6 @@
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+    <index name="contract_state" meta_type="FieldIndex" remove="true">
+    </index>
+
+</object>

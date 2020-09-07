@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="cs.publiccontracts">
+
+  <records prefix="plone.bundles/cs.publiccontracts"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+
+    <value key="depends">plone</value>
+    <value key="last_compilation">2020-09-07 08:00:00</value>
+    <value key="enabled">False</value>
+    <value key="compile">False</value>
+    <value key="jscompilation">++plone++cs.publiccontracts/cs.publiccontracts.js</value>
+    <value key="csscompilation">++plone++cs.publiccontracts/cs.publiccontracts.css</value>
+  </records>
+
+</registry>

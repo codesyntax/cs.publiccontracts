@@ -14,48 +14,33 @@
   <include file="permissions.zcml" />
   <include package=".browser" />
 
-  <!-- Grok the package to initialise schema interfaces and content classes -->
-  <grok:grok package="." />
-
   <i18n:registerTranslations directory="locales" />
 
   <!-- Register an extension profile to make the product installable
        in Plone -->
   <genericsetup:registerProfile
       name="default"
-      title="cs.publiccontracts: Content-types"
+      title="cs.publiccontracts"
       directory="profiles/default"
       description="Content-types for cs.publiccontracts. Public Contracs Product"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <browser:page
-      for=".contract.IContract"
-      name="view"
-      template="templates/contractview.pt"
-      permission="zope.Public"
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="cs.publiccontracts: Uninstall"
+      directory="profiles/uninstall"
+      description="Unintall profile Content-types for cs.publiccontracts. Public Contracs Product"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <browser:page
-      for=".contractsfolder.IContractsFolder"
-      name="view"
-      class=".contractsfolder.ContractsFolderView"
-      template="templates/contractsfolderview.pt"
-      permission="zope.Public"
-      />
 
   <!-- -*- extra stuff goes here -*- -->
 
     <include package=".vocabularies" />
 
 
-    <include package=".vocabularies" />
-
-
-    <include package=".vocabularies" />
-
-
-    <include package=".vocabularies" />
+    <include package=".views" />
 
 
 </configure>

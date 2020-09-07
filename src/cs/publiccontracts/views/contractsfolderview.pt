@@ -1,0 +1,132 @@
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  lang="en"
+  metal:use-macro="context/main_template/macros/master"
+  i18n:domain="cs.publiccontracts"
+>
+  <body>
+    <tal:comment tal:condition="nothing">
+      This is a sample view template. It will not be used for rendering the
+      content unless activated by creation of a view class with a matching name.
+    </tal:comment>
+
+    <metal:contentitle fill-slot="content-title">
+      <h1 class="documentFirstHeading" tal:content="context/Title"></h1>
+
+      <tal:conditiongenericfile
+        tal:define="generic_file context/generic_file"
+        tal:condition="generic_file"
+      >
+        <a
+          class="pull-right btn btn-primary"
+          i18n:translate="generic-file-text"
+          tal:attributes="href string:${context/absolute_url}/@@download/generic_file"
+        >
+          Generic File
+        </a>
+      </tal:conditiongenericfile>
+    </metal:contentitle>
+
+    <metal:main fill-slot="content-core">
+      <metal:content-core
+        define-macro="content-core"
+        tal:define="contracts_dict view/contracts_dict;
+                                                              has_states context/states;
+                                                              has_procedures context/procedures;
+                                                              has_processings context/processings;
+                                                              has_types context/types;
+  toLocalizedTime nocall:here/@@plone/toLocalizedTime"
+      >
+        <ul class="tabs" tal:condition="has_states">
+          <li tal:repeat="tab contracts_dict">
+            <a
+              tal:define="tab_id python:tab['value']"
+              tal:attributes="href string:#tab-${tab_id}"
+              tal:content="python:tab['title'] + ' (' + str(len(tab['contracts'])) + ')'"
+            >
+              Tab title
+            </a>
+          </li>
+        </ul>
+
+        <tal:repeat repeat="contract_dict contracts_dict">
+          <div tal:attributes="id python:'tab-' + contract_dict['value']">
+            <table
+              class="grid listing"
+              tal:define="contracts python:contract_dict['contracts']"
+              tal:condition="contracts"
+            >
+              <tr>
+                <th i18n:translate="file_number">file_number</th>
+
+                <th i18n:translate="title">Title</th>
+
+                <th i18n:translate="file_type" tal:condition="has_types">
+                  file_type
+                </th>
+
+                <th
+                  i18n:translate="file_procedure"
+                  tal:condition="has_procedures"
+                >
+                  file_procedure
+                </th>
+
+                <th
+                  i18n:translate="file_processing"
+                  tal:condition="has_processings"
+                >
+                  file_processing
+                </th>
+
+                <th i18n:translate="published_date">published_date</th>
+
+                <th i18n:translate="last_date">last_date</th>
+              </tr>
+
+              <tr tal:repeat="contract contracts">
+                <tal:define define="contract_obj contract/getObject">
+                  <td tal:content="contract_obj/file_number"></td>
+                  <td>
+                    <a
+                      tal:content="contract_obj/Title"
+                      tal:attributes="href contract_obj/absolute_url"
+                    ></a>
+                  </td>
+                  <td
+                    tal:content="contract_obj/file_type_string"
+                    tal:condition="has_types"
+                  ></td>
+                  <td
+                    tal:content="contract_obj/file_procedure_string"
+                    tal:condition="has_procedures"
+                  ></td>
+                  <td
+                    tal:content="contract_obj/file_processing_string"
+                    tal:condition="has_processings"
+                  ></td>
+                  <td
+                    tal:content="python:toLocalizedTime(contract_obj.EffectiveDate())"
+                  ></td>
+                  <td
+                    tal:define="has_hour python:contract_obj.has_hour(contract_obj.last_date)"
+                  >
+                    <tal:replace
+                      tal:content="python:toLocalizedTime(contract_obj.last_date, long_format=has_hour)"
+                      tal:condition="contract_obj/last_date"
+                    >
+                    </tal:replace>
+                  </td>
+                </tal:define>
+              </tr>
+            </table>
+          </div>
+        </tal:repeat>
+      </metal:content-core>
+    </metal:main>
+  </body>
+</html>

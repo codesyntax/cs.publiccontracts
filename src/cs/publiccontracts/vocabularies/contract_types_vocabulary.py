@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
-# from plone import api
 from cs.publiccontracts import _
+from plone import api
 from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
 from zope.interface import implementer
@@ -24,10 +23,7 @@ class ContractTypesVocabulary(object):
     def __call__(self, context):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
-        items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
-        ]
+        items = []
 
         # Fix context if you are using the vocabulary in DataGridField.
         # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # NOQA: 501
@@ -35,15 +31,18 @@ class ContractTypesVocabulary(object):
             req = getRequest()
             context = req.PARENTS[0]
 
+        putils = api.portal.get_tool("plone_utils")
+        contracts_types = context.types
+        items = [
+            VocabItem(putils.normalizeString(i["value"]), i["name"])
+            for i in contracts_types
+        ]
+
         # create a list of SimpleTerm items:
         terms = []
         for item in items:
             terms.append(
-                SimpleTerm(
-                    value=item.token,
-                    token=str(item.token),
-                    title=item.value,
-                )
+                SimpleTerm(value=item.token, token=str(item.token), title=item.value,)
             )
         # Create a SimpleVocabulary from the terms list and return it:
         return SimpleVocabulary(terms)
