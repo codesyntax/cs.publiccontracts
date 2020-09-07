@@ -52,4 +52,7 @@
     <include package=".vocabularies" />
 
 
+    <include package=".vocabularies" />
+
+
 </configure>
