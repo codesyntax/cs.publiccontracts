@@ -55,6 +55,20 @@ class IContract(Interface):
         required=False,
     )
 
+    file_organization = schema.Choice(
+        title=_(u'File organization'),
+        description=_(u'Contract organization'),
+        vocabulary=u'cs.publiccontracts.ContractOrganizationsVocabulary',
+        required=False,
+        )
+
+    file_body = schema.Choice(
+        title=_(u'File body'),
+        description=_(u'Contract body'),
+        vocabulary=u'cs.publiccontracts.ContractBodiesVocabulary',
+        required=False,
+        )
+
     file_state = schema.Choice(
         title=_(u"File State"),
         description=_(u"Contract State"),
@@ -121,6 +135,26 @@ class Contract(Container):
         )
         try:
             term = vocabulary.getTerm(self.file_processing)
+            return term and term.title or None
+        except LookupError:
+            return None
+
+    def file_body_string(self):
+        vocabulary = get_vocabulary(
+            "cs.publiccontracts.ContractBodiesVocabulary", self
+        )
+        try:
+            term = vocabulary.getTerm(self.file_body)
+            return term and term.title or None
+        except LookupError:
+            return None
+
+    def file_organization_string(self):
+        vocabulary = get_vocabulary(
+            "cs.publiccontracts.ContractOrganizationsVocabulary", self
+        )
+        try:
+            term = vocabulary.getTerm(self.file_organization)
             return term and term.title or None
         except LookupError:
             return None

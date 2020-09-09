@@ -27,5 +27,15 @@
         name="cs.publiccontracts.ContractTypesVocabulary"
     />
 
+    <utility
+        component=".contract_bodies_vocabulary.ContractBodiesVocabularyFactory"
+        name="cs.publiccontracts.ContractBodiesVocabulary"
+    />
+
+    <utility
+        component=".contract_organizations_vocabulary.ContractOrganizationsVocabularyFactory"
+        name="cs.publiccontracts.ContractOrganizationsVocabulary"
+    />
+
 
 </configure>

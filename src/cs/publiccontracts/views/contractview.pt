@@ -49,6 +49,8 @@
           tal:define="file_type_string context/file_type_string;
                     file_procedure_string context/file_procedure_string;
                     file_processing context/file_processing_string;
+                    file_body context/file_body_string;
+                    file_organization context/file_organization_string;
                     file_state context/file_state_string;
                     info context/info;
                     "
@@ -67,6 +69,16 @@
           <tal:define condition="file_processing">
             <dt i18n:translate="file_processing">file_processing</dt>
             <dd tal:content="file_processing"></dd>
+          </tal:define>
+
+          <tal:define condition="file_body">
+            <dt i18n:translate="file_body">file_body</dt>
+            <dd tal:content="file_body"></dd>
+          </tal:define>
+
+          <tal:define condition="file_organization">
+            <dt i18n:translate="file_organization">file_organization</dt>
+            <dd tal:content="file_organization"></dd>
           </tal:define>
 
           <tal:define condition="file_state">

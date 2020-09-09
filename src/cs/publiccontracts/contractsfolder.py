@@ -33,6 +33,16 @@ class IContractProcessingsRowSchema(Interface):
     value = schema.TextLine(title=_(u"Contract processing value"))
     name = schema.TextLine(title=_(u"Contract processing name"))
 
+class IContractOrganizationsRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract organization value'))
+    name = schema.TextLine(title=_(u'Contract organization name'))
+
+class IContractBodiesRowSchema(Interface):
+
+    value = schema.TextLine(title=_(u'Contract body value'))
+    name = schema.TextLine(title=_(u'Contract body name'))
+
 
 # Interface class; used to define content-type schema.
 class IContractsFolder(Interface):
@@ -83,6 +93,28 @@ class IContractsFolder(Interface):
             required=False,
         ),
     )
+
+    widget(organizations=DataGridFieldFactory)
+    organizations = schema.List(
+        title=_(u'Contract organizations'),
+        description=_(u'Enter here the contract organizations'),
+        required=False,
+        value_type=DictRow(
+            title=_(u'Contract organizations'),
+            schema=IContractOrganizationsRowSchema,
+            required=False)
+        )
+
+    widget(bodies=DataGridFieldFactory)
+    bodies = schema.List(
+        title=_(u'Contract bodies'),
+        description=_(u'Enter here the contract bodies'),
+        required=False,
+        value_type=DictRow(
+            title=_(u'Contract bodys'),
+            schema=IContractBodiesRowSchema,
+            required=False)
+        )
 
     generic_file = NamedBlobFile(title=_(u"Generic File"), required=False,)
 
