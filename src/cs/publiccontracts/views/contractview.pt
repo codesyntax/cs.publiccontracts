@@ -16,7 +16,7 @@
 
     <metal:main fill-slot="content-core">
       <metal:content-core define-macro="content-core">
-        <h2 id="file-number">
+        <h2 id="file-number" tal:condition="context/file_number">
           <span i18n:translate="file_number_title">File number:</span>
           <span tal:content="context/file_number"></span>
         </h2>

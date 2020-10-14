@@ -56,7 +56,7 @@
         <tal:repeat repeat="contract_dict contracts_dict">
           <div tal:attributes="id python:'tab-' + contract_dict['value']">
             <table
-              class="grid listing"
+              class="grid listing table table-striped mt-4"
               tal:define="contracts python:contract_dict['contracts']"
               tal:condition="contracts"
             >
