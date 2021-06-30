@@ -109,7 +109,7 @@ alsoProvides(IContract["file_number"], ILanguageIndependentField)
 alsoProvides(IContract["file_type"], ILanguageIndependentField)
 alsoProvides(IContract["file_procedure"], ILanguageIndependentField)
 alsoProvides(IContract["file_processing"], ILanguageIndependentField)
-alsoProvides(IContract["file_state"], ILanguageIndependentField)
+#alsoProvides(IContract["file_state"], ILanguageIndependentField)
 alsoProvides(IContract["last_date"], ILanguageIndependentField)
 
 
