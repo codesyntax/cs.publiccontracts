@@ -137,7 +137,7 @@
                       tal:define="size file/file/getSize;
                                           kb python:size/1024"
                     >
-                      &mdash; <span tal:replace="kb" /> KB</span
+                      &mdash; <span tal:replace="python:'{:.2f}'.format(kb)" /> KB</span
                     >
                   </p>
 
