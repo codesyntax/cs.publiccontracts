@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_parent
 from collective import dexteritytextindexer
-from collective.z3cform.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield import DictRow
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.row import DictRow
 from cs.publiccontracts import _
 from plone.app.event.base import date_speller
 from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
@@ -19,9 +19,14 @@ from zope.schema.interfaces import IVocabularyFactory
 
 class IDatesRowSchema(Interface):
     title = schema.TextLine(
-        title=_(u"Date title"), description=_(u"Date title"), required=False,
+        title=_(u"Date title"),
+        description=_(u"Date title"),
+        required=False,
     )
-    day = schema.Datetime(title=_(u"Day"), required=False,)
+    day = schema.Datetime(
+        title=_(u"Day"),
+        required=False,
+    )
 
 
 class IContract(Interface):
@@ -31,7 +36,9 @@ class IContract(Interface):
 
     dexteritytextindexer.searchable("file_number")
     file_number = schema.TextLine(
-        title=_(u"File Number"), description=_(u"Contract file number"), required=True,
+        title=_(u"File Number"),
+        description=_(u"Contract file number"),
+        required=True,
     )
 
     file_type = schema.Choice(
@@ -56,18 +63,18 @@ class IContract(Interface):
     )
 
     file_organization = schema.Choice(
-        title=_(u'File organization'),
-        description=_(u'Contract organization'),
-        vocabulary=u'cs.publiccontracts.ContractOrganizationsVocabulary',
+        title=_(u"File organization"),
+        description=_(u"Contract organization"),
+        vocabulary=u"cs.publiccontracts.ContractOrganizationsVocabulary",
         required=False,
-        )
+    )
 
     file_body = schema.Choice(
-        title=_(u'File body'),
-        description=_(u'Contract body'),
-        vocabulary=u'cs.publiccontracts.ContractBodiesVocabulary',
+        title=_(u"File body"),
+        description=_(u"Contract body"),
+        vocabulary=u"cs.publiccontracts.ContractBodiesVocabulary",
         required=False,
-        )
+    )
 
     file_state = schema.Choice(
         title=_(u"File State"),
@@ -84,7 +91,9 @@ class IContract(Interface):
 
     dexteritytextindexer.searchable("file_number")
     info = RichText(
-        title=_(u"info"), description=_(u"Contract information"), required=False,
+        title=_(u"info"),
+        description=_(u"Contract information"),
+        required=False,
     )
 
     widget(dates=DataGridFieldFactory)
@@ -140,9 +149,7 @@ class Contract(Container):
             return None
 
     def file_body_string(self):
-        vocabulary = get_vocabulary(
-            "cs.publiccontracts.ContractBodiesVocabulary", self
-        )
+        vocabulary = get_vocabulary("cs.publiccontracts.ContractBodiesVocabulary", self)
         try:
             term = vocabulary.getTerm(self.file_body)
             return term and term.title or None

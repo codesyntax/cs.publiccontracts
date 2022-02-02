@@ -11,4 +11,11 @@
       directory="resources"
       />
 
+  <browser:page
+    name="import_lan_eta_kon"
+    for="cs.publiccontracts.contractsfolder.IContractsFolder"
+    class=".import_lan_eta_kon.ImportView"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
