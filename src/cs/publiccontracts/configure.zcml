@@ -41,5 +41,9 @@
 
     <include package=".views" />
 
+    <include package="z3c.unconfigure" file="meta.zcml" />
+    <unconfigure>
+      <adapter factory="collective.z3cform.datagridfield.autoform.AutoExtensibleSubformAdapter" />
+    </unconfigure>
 
 </configure>
