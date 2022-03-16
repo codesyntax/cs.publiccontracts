@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from collective.z3cform.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield import DictRow
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.row import DictRow
 from cs.publiccontracts import _
 from plone.autoform.directives import widget
 from plone.dexterity.content import Container
@@ -33,15 +33,17 @@ class IContractProcessingsRowSchema(Interface):
     value = schema.TextLine(title=_(u"Contract processing value"))
     name = schema.TextLine(title=_(u"Contract processing name"))
 
+
 class IContractOrganizationsRowSchema(Interface):
 
-    value = schema.TextLine(title=_(u'Contract organization value'))
-    name = schema.TextLine(title=_(u'Contract organization name'))
+    value = schema.TextLine(title=_(u"Contract organization value"))
+    name = schema.TextLine(title=_(u"Contract organization name"))
+
 
 class IContractBodiesRowSchema(Interface):
 
-    value = schema.TextLine(title=_(u'Contract body value'))
-    name = schema.TextLine(title=_(u'Contract body name'))
+    value = schema.TextLine(title=_(u"Contract body value"))
+    name = schema.TextLine(title=_(u"Contract body name"))
 
 
 # Interface class; used to define content-type schema.
@@ -96,27 +98,30 @@ class IContractsFolder(Interface):
 
     widget(organizations=DataGridFieldFactory)
     organizations = schema.List(
-        title=_(u'Contract organizations'),
-        description=_(u'Enter here the contract organizations'),
+        title=_(u"Contract organizations"),
+        description=_(u"Enter here the contract organizations"),
         required=False,
         value_type=DictRow(
-            title=_(u'Contract organizations'),
+            title=_(u"Contract organizations"),
             schema=IContractOrganizationsRowSchema,
-            required=False)
-        )
+            required=False,
+        ),
+    )
 
     widget(bodies=DataGridFieldFactory)
     bodies = schema.List(
-        title=_(u'Contract bodies'),
-        description=_(u'Enter here the contract bodies'),
+        title=_(u"Contract bodies"),
+        description=_(u"Enter here the contract bodies"),
         required=False,
         value_type=DictRow(
-            title=_(u'Contract bodys'),
-            schema=IContractBodiesRowSchema,
-            required=False)
-        )
+            title=_(u"Contract bodys"), schema=IContractBodiesRowSchema, required=False
+        ),
+    )
 
-    generic_file = NamedBlobFile(title=_(u"Generic File"), required=False,)
+    generic_file = NamedBlobFile(
+        title=_(u"Generic File"),
+        required=False,
+    )
 
 
 @implementer(IContractsFolder)
