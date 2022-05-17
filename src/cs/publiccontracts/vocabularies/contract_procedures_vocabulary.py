@@ -8,6 +8,7 @@ from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+from Acquisition import aq_parent
 
 
 class VocabItem(object):
@@ -18,8 +19,7 @@ class VocabItem(object):
 
 @implementer(IVocabularyFactory)
 class ContractProceduresVocabulary(object):
-    """
-    """
+    """ """
 
     def __call__(self, context):
         # Just an example list of content for our vocabulary,
@@ -31,17 +31,25 @@ class ContractProceduresVocabulary(object):
             context = req.PARENTS[0]
 
         putils = api.portal.get_tool("plone_utils")
-        contracts_procedures = context.procedures
-        items = [
-            VocabItem(putils.normalizeString(i["value"]), i["name"])
-            for i in contracts_procedures
-        ]
+        try:
+            contracts_folder = aq_parent(context)
+            contracts_procedures = contracts_folder.procedures
+            items = [
+                VocabItem(putils.normalizeString(i["value"]), i["name"])
+                for i in contracts_procedures
+            ]
+        except:
+            items = []
 
         # create a list of SimpleTerm items:
         terms = []
         for item in items:
             terms.append(
-                SimpleTerm(value=item.token, token=str(item.token), title=item.value,)
+                SimpleTerm(
+                    value=item.token,
+                    token=str(item.token),
+                    title=item.value,
+                )
             )
         # Create a SimpleVocabulary from the terms list and return it:
         return SimpleVocabulary(terms)
