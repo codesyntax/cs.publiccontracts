@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-09-07 11:23+0000\n"
+"POT-Creation-Date: 2022-11-09 11:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./configure.zcml:27
+#: ./configure.zcml:26
 msgid "Content-types for cs.publiccontracts. Public Contracs Product"
 msgstr ""
 
@@ -22,44 +22,80 @@ msgstr ""
 msgid "Contract"
 msgstr ""
 
-#: ./contract.py:46
+#: ./contract.py:63
 msgid "Contract Procedure"
 msgstr ""
 
-#: ./contractsfolder.py:65
+#: ./contractsfolder.py:77
 msgid "Contract Procedures"
 msgstr ""
 
-#: ./contract.py:53
+#: ./contract.py:70
 msgid "Contract Processing"
 msgstr ""
 
-#: ./contractsfolder.py:77
+#: ./contractsfolder.py:89
 msgid "Contract Processings"
 msgstr ""
 
-#: ./contract.py:60
+#: ./contract.py:91
 msgid "Contract State"
 msgstr ""
 
-#: ./contractsfolder.py:55
+#: ./contractsfolder.py:67
 msgid "Contract States"
 msgstr ""
 
-#: ./contract.py:39
+#: ./contract.py:56
 msgid "Contract Type"
 msgstr ""
 
-#: ./contractsfolder.py:45
+#: ./contractsfolder.py:57
 msgid "Contract Types"
 msgstr ""
 
-#: ./contract.py:34
+#: ./contractsfolder.py:113
+msgid "Contract bodies"
+msgstr ""
+
+#: ./contract.py:84
+msgid "Contract body"
+msgstr ""
+
+#: ./contractsfolder.py:46
+msgid "Contract body name"
+msgstr ""
+
+#: ./contractsfolder.py:45
+msgid "Contract body value"
+msgstr ""
+
+#: ./contractsfolder.py:117
+msgid "Contract bodys"
+msgstr ""
+
+#: ./contract.py:50
 msgid "Contract file number"
 msgstr ""
 
-#: ./contract.py:73
+#: ./contract.py:105
 msgid "Contract information"
+msgstr ""
+
+#: ./contract.py:77
+msgid "Contract organization"
+msgstr ""
+
+#: ./contractsfolder.py:40
+msgid "Contract organization name"
+msgstr ""
+
+#: ./contractsfolder.py:39
+msgid "Contract organization value"
+msgstr ""
+
+#: ./contractsfolder.py:101
+msgid "Contract organizations"
 msgstr ""
 
 #: ./contractsfolder.py:28
@@ -102,59 +138,83 @@ msgstr ""
 msgid "ContractsFolder"
 msgstr ""
 
+#: ./contract.py:27
+msgid "Date description"
+msgstr ""
+
+#: ./contract.py:36
+msgid "Date link"
+msgstr ""
+
 #: ./contract.py:22
 msgid "Date title"
 msgstr ""
 
-#: ./contract.py:24
+#: ./contract.py:32
 msgid "Day"
 msgstr ""
 
-#: ./contractsfolder.py:66
+#: ./contractsfolder.py:78
 msgid "Enter here the contract Procedures"
 msgstr ""
 
-#: ./contractsfolder.py:78
+#: ./contractsfolder.py:90
 msgid "Enter here the contract Processings"
 msgstr ""
 
-#: ./contractsfolder.py:56
+#: ./contractsfolder.py:114
+msgid "Enter here the contract bodies"
+msgstr ""
+
+#: ./contractsfolder.py:102
+msgid "Enter here the contract organizations"
+msgstr ""
+
+#: ./contractsfolder.py:68
 msgid "Enter here the contract states"
 msgstr ""
 
-#: ./contractsfolder.py:46
+#: ./contractsfolder.py:58
 msgid "Enter here the contract types"
 msgstr ""
 
-#: ./contract.py:34
+#: ./contract.py:49
 msgid "File Number"
 msgstr ""
 
-#: ./contract.py:45
+#: ./contract.py:62
 msgid "File Procedure"
 msgstr ""
 
-#: ./contract.py:52
+#: ./contract.py:69
 msgid "File Processing"
 msgstr ""
 
-#: ./contract.py:59
+#: ./contract.py:90
 msgid "File State"
 msgstr ""
 
-#: ./contract.py:38
+#: ./contract.py:55
 msgid "File Type"
 msgstr ""
 
-#: ./contractsfolder.py:87
+#: ./contract.py:83
+msgid "File body"
+msgstr ""
+
+#: ./contract.py:76
+msgid "File organization"
+msgstr ""
+
+#: ./contractsfolder.py:122
 msgid "Generic File"
 msgstr ""
 
-#: ./contract.py:66
+#: ./contract.py:97
 msgid "Last Date"
 msgstr ""
 
-#: ./contract.py:67
+#: ./contract.py:98
 msgid "Last date for the submission of tenders"
 msgstr ""
 
@@ -162,27 +222,31 @@ msgstr ""
 msgid "Public Contract"
 msgstr ""
 
-#: ./tests/test_vocab_contract_procedures_vocabulary.py:31
-#: ./tests/test_vocab_contract_processings_vocabulary.py:31
-#: ./tests/test_vocab_contract_states_vocabulary.py:31
+#: ./tests/test_vocab_contract_procedures_vocabulary.py:30
+#: ./tests/test_vocab_contract_processings_vocabulary.py:30
+#: ./tests/test_vocab_contract_states_vocabulary.py:30
 msgid "Sony Aplha 7R III"
 msgstr ""
 
-#: ./configure.zcml:35
+#: ./configure.zcml:34
 msgid "Unintall profile Content-types for cs.publiccontracts. Public Contracs Product"
 msgstr ""
 
-#: ./configure.zcml:27
+#: ./configure.zcml:26
 msgid "cs.publiccontracts"
 msgstr ""
 
-#: ./configure.zcml:35
+#: ./configure.zcml:34
 msgid "cs.publiccontracts: Uninstall"
 msgstr ""
 
 #. Default: "Dates"
-#: ./views/contractview.pt:84
+#: ./views/contractview.pt:77
 msgid "dates"
+msgstr ""
+
+#: ./views/contractview.pt:56
+msgid "file_body"
 msgstr ""
 
 #: ./views/contractsfolderview.pt:64
@@ -190,31 +254,35 @@ msgid "file_number"
 msgstr ""
 
 #. Default: "File number:"
-#: ./views/contractview.pt:20
+#: ./views/contractview.pt:14
 msgid "file_number_title"
 msgstr ""
 
+#: ./views/contractview.pt:61
+msgid "file_organization"
+msgstr ""
+
 #: ./views/contractsfolderview.pt:72
-#: ./views/contractview.pt:63
+#: ./views/contractview.pt:46
 msgid "file_procedure"
 msgstr ""
 
 #: ./views/contractsfolderview.pt:79
-#: ./views/contractview.pt:68
+#: ./views/contractview.pt:51
 msgid "file_processing"
 msgstr ""
 
-#: ./views/contractview.pt:73
+#: ./views/contractview.pt:66
 msgid "file_state"
 msgstr ""
 
 #: ./views/contractsfolderview.pt:68
-#: ./views/contractview.pt:58
+#: ./views/contractview.pt:41
 msgid "file_type"
 msgstr ""
 
 #. Default: "Files"
-#: ./views/contractview.pt:99
+#: ./views/contractview.pt:92
 msgid "files"
 msgstr ""
 
@@ -223,18 +291,23 @@ msgstr ""
 msgid "generic-file-text"
 msgstr ""
 
-#: ./contract.py:73
-#: ./views/contractview.pt:78
+#: ./contract.py:104
+#: ./views/contractview.pt:71
 msgid "info"
 msgstr ""
 
 #: ./views/contractsfolderview.pt:88
-#: ./views/contractview.pt:40
+#: ./views/contractview.pt:26
 msgid "last_date"
 msgstr ""
 
+#. Default: "More info"
+#: ./views/contractview.pt:85
+msgid "more-info"
+msgstr ""
+
 #: ./views/contractsfolderview.pt:86
-#: ./views/contractview.pt:32
+#: ./views/contractview.pt:20
 msgid "published_date"
 msgstr ""
 

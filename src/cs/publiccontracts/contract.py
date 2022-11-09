@@ -22,11 +22,13 @@ class IDatesRowSchema(Interface):
         title=_(u"Date title"),
         description=_(u"Date title"),
         required=False,
+        default=''
     )
     description = schema.TextLine(
         title=_(u"Date description"),
         description=_(u"Date description"),
         required=False,
+        default=''
     )
     day = schema.Datetime(
         title=_(u"Day"),
@@ -36,6 +38,7 @@ class IDatesRowSchema(Interface):
         title=_(u"Date link"),
         description=_(u"Date link"),
         required=False,
+        default=''
     )
 
 
