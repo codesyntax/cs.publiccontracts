@@ -23,8 +23,18 @@ class IDatesRowSchema(Interface):
         description=_(u"Date title"),
         required=False,
     )
+    description = schema.TextLine(
+        title=_(u"Date description"),
+        description=_(u"Date description"),
+        required=False,
+    )
     day = schema.Datetime(
         title=_(u"Day"),
+        required=False,
+    )
+    link = schema.TextLine(
+        title=_(u"Date link"),
+        description=_(u"Date link"),
         required=False,
     )
 
@@ -175,7 +185,7 @@ class Contract(Container):
             return None
 
     def files(self):
-        return self.getFolderContents({"portal_type": "File"}, full_objects=1)
+        return self.getFolderContents({"portal_type": ["File", "Link"]}, full_objects=1)
 
     def contract_state_index(self):
         return self.file_state
