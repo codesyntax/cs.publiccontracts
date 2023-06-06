@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-09-07 11:23+0000\n"
-"PO-Revision-Date: 2016-06-02 11:27+0200\n"
+"PO-Revision-Date: 2023-06-06 09:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,234 +13,228 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 "Language: eu\n"
 
-#: ./configure.zcml:27
+#: configure.zcml:27
 msgid "Content-types for cs.publiccontracts. Public Contracs Product"
 msgstr ""
 
-#: ./profiles/default/types/Contract.xml
+#: profiles/default/types/Contract.xml
 msgid "Contract"
 msgstr "Kontratua"
 
-#: ./contract.py:46
+#: contract.py:46
 msgid "Contract Procedure"
 msgstr "Prozedura"
 
-#: ./contractsfolder.py:65
+#: contractsfolder.py:65
 msgid "Contract Procedures"
 msgstr "Prozedurak"
 
-#: ./contract.py:53
+#: contract.py:53
 msgid "Contract Processing"
 msgstr "Izapidea"
 
-#: ./contractsfolder.py:77
+#: contractsfolder.py:77
 msgid "Contract Processings"
 msgstr "Izapideak"
 
-#: ./contract.py:60
+#: contract.py:60
 msgid "Contract State"
 msgstr "Egoera"
 
-#: ./contractsfolder.py:55
+#: contractsfolder.py:55
 msgid "Contract States"
 msgstr "Egoerak"
 
-#: ./contract.py:39
+#: contract.py:39
 msgid "Contract Type"
 msgstr "Mota"
 
-#: ./contractsfolder.py:45
+#: contractsfolder.py:45
 msgid "Contract Types"
 msgstr "Motak"
 
-#: ./contract.py:34
+#: contract.py:34
 msgid "Contract file number"
 msgstr "Expediente zenbakia"
 
-#: ./contract.py:73
+#: contract.py:73
 msgid "Contract information"
 msgstr "Informazio gehigarria"
 
-#: ./contractsfolder.py:28
+#: contractsfolder.py:28
 msgid "Contract procedure name"
 msgstr "Prozedura izena"
 
-#: ./contractsfolder.py:27
+#: contractsfolder.py:27
 msgid "Contract procedure value"
 msgstr "Prozedura balioa"
 
-#: ./contractsfolder.py:34
+#: contractsfolder.py:34
 msgid "Contract processing name"
 msgstr "Izapide izena"
 
-#: ./contractsfolder.py:33
+#: contractsfolder.py:33
 msgid "Contract processing value"
 msgstr "Izapide balioa"
 
-#: ./contractsfolder.py:22
+#: contractsfolder.py:22
 msgid "Contract state name"
 msgstr "Egoera izena"
 
-#: ./contractsfolder.py:21
+#: contractsfolder.py:21
 msgid "Contract state value"
 msgstr "Egoera balioa"
 
-#: ./contractsfolder.py:16
+#: contractsfolder.py:16
 msgid "Contract type name"
 msgstr "Mota izena"
 
-#: ./contractsfolder.py:15
+#: contractsfolder.py:15
 msgid "Contract type value"
 msgstr "Mota balioa"
 
-#: ./profiles/default/types/ContractsFolder.xml
+#: profiles/default/types/ContractsFolder.xml
 msgid "Contracts Folder"
 msgstr "Kontratatzailearen profila"
 
-#: ./profiles/default/types/ContractsFolder.xml
+#: profiles/default/types/ContractsFolder.xml
 msgid "ContractsFolder"
 msgstr "Kontratatzailearen profila"
 
-#: ./contract.py:22
+#: contract.py:22
 msgid "Date title"
 msgstr "Dataren titulua"
 
-#: ./contract.py:24
+#: contract.py:24
 msgid "Day"
 msgstr "Data"
 
-#: ./contractsfolder.py:66
+#: contractsfolder.py:66
 msgid "Enter here the contract Procedures"
 msgstr "Sartu hemen prozedura desberdinak"
 
-#: ./contractsfolder.py:78
+#: contractsfolder.py:78
 msgid "Enter here the contract Processings"
 msgstr "Sartu hemen izapide desberdinak"
 
-#: ./contractsfolder.py:56
+#: contractsfolder.py:56
 msgid "Enter here the contract states"
 msgstr "Sartu hemen egoera desberdinak"
 
-#: ./contractsfolder.py:46
+#: contractsfolder.py:46
 msgid "Enter here the contract types"
 msgstr "Sartu hemen mota desberdinak"
 
-#: ./contract.py:34
+#: contract.py:34
 msgid "File Number"
 msgstr "Expediente zenbakia"
 
-#: ./contract.py:45
+#: contract.py:45
 msgid "File Procedure"
 msgstr "Prozedura"
 
-#: ./contract.py:52
+#: contract.py:52
 msgid "File Processing"
 msgstr "Izapidea"
 
-#: ./contract.py:59
+#: contract.py:59
 msgid "File State"
 msgstr "Egoera"
 
-#: ./contract.py:38
+#: contract.py:38
 msgid "File Type"
 msgstr "Mota"
 
-#: ./contractsfolder.py:87
+#: contractsfolder.py:87
 msgid "Generic File"
 msgstr "Fitxategi orokorra"
 
-#: ./contract.py:66
+#: contract.py:66
 msgid "Last Date"
 msgstr "Azken eguna"
 
-#: ./contract.py:67
+#: contract.py:67
 msgid "Last date for the submission of tenders"
 msgstr "Eskaintzak aurkezteko azken eguna"
 
-#: ./profiles/default/types/Contract.xml
+#: profiles/default/types/Contract.xml
 msgid "Public Contract"
 msgstr "Kontratua"
 
-#: ./tests/test_vocab_contract_procedures_vocabulary.py:31
-#: ./tests/test_vocab_contract_processings_vocabulary.py:31
-#: ./tests/test_vocab_contract_states_vocabulary.py:31
+#: tests/test_vocab_contract_procedures_vocabulary.py:31
+#: tests/test_vocab_contract_processings_vocabulary.py:31
+#: tests/test_vocab_contract_states_vocabulary.py:31
 msgid "Sony Aplha 7R III"
 msgstr ""
 
-#: ./configure.zcml:35
+#: configure.zcml:35
 msgid "Unintall profile Content-types for cs.publiccontracts. Public Contracs Product"
 msgstr ""
 
-#: ./configure.zcml:27
+#: configure.zcml:27
 msgid "cs.publiccontracts"
 msgstr ""
 
-#: ./configure.zcml:35
+#: configure.zcml:35
 msgid "cs.publiccontracts: Uninstall"
 msgstr ""
 
 #. Default: "Dates"
-#: ./views/contractview.pt:84
+#: views/contractview.pt:84
 msgid "dates"
 msgstr "Datak"
 
-#: ./views/contractsfolderview.pt:64
+#: views/contractsfolderview.pt:64
 msgid "file_number"
-msgstr "Expediente zenbakia"
+msgstr "Espediente zenbakia"
 
 #. Default: "File number:"
-#: ./views/contractview.pt:20
+#: views/contractview.pt:20
 msgid "file_number_title"
-msgstr "Expediente zenbakia:"
+msgstr "Espediente zenbakia:"
 
-#: ./views/contractsfolderview.pt:72
-#: ./views/contractview.pt:63
+#: views/contractsfolderview.pt:72 views/contractview.pt:63
 msgid "file_procedure"
 msgstr "Prozedura"
 
-#: ./views/contractsfolderview.pt:79
-#: ./views/contractview.pt:68
+#: views/contractsfolderview.pt:79 views/contractview.pt:68
 msgid "file_processing"
 msgstr "Izapidea"
 
-#: ./views/contractview.pt:73
+#: views/contractview.pt:73
 msgid "file_state"
 msgstr "Egoera"
 
-#: ./views/contractsfolderview.pt:68
-#: ./views/contractview.pt:58
+#: views/contractsfolderview.pt:68 views/contractview.pt:58
 msgid "file_type"
 msgstr "Mota"
 
 #. Default: "Files"
-#: ./views/contractview.pt:99
+#: views/contractview.pt:99
 msgid "files"
 msgstr "Fitxategiak"
 
 #. Default: "Generic File"
-#: ./views/contractsfolderview.pt:24
+#: views/contractsfolderview.pt:24
 msgid "generic-file-text"
 msgstr "Kontratazio publikoaren argibideak"
 
-#: ./contract.py:73
-#: ./views/contractview.pt:78
+#: contract.py:73 views/contractview.pt:78
 msgid "info"
 msgstr "Informazio gehigarria"
 
-#: ./views/contractsfolderview.pt:88
-#: ./views/contractview.pt:40
+#: views/contractsfolderview.pt:88 views/contractview.pt:40
 msgid "last_date"
 msgstr "Azken eguna"
 
-#: ./views/contractsfolderview.pt:86
-#: ./views/contractview.pt:32
+#: views/contractsfolderview.pt:86 views/contractview.pt:32
 msgid "published_date"
 msgstr "Argitaratze data"
 
 #. Default: "Title"
-#: ./views/contractsfolderview.pt:66
+#: views/contractsfolderview.pt:66
 msgid "title"
 msgstr "Titulua"
