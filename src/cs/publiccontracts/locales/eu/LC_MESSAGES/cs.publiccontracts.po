@@ -1,8 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2020-09-07 11:23+0000\n"
 "PO-Revision-Date: 2023-06-06 09:37+0200\n"
+=======
+"POT-Creation-Date: 2022-11-09 11:42+0000\n"
+"PO-Revision-Date: 2022-11-09 12:43+0100\n"
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +21,11 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Language: eu\n"
 
+<<<<<<< HEAD
 #: configure.zcml:27
+=======
+#: configure.zcml:26
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "Content-types for cs.publiccontracts. Public Contracs Product"
 msgstr ""
 
@@ -24,6 +33,7 @@ msgstr ""
 msgid "Contract"
 msgstr "Kontratua"
 
+<<<<<<< HEAD
 #: contract.py:46
 msgid "Contract Procedure"
 msgstr "Prozedura"
@@ -64,6 +74,84 @@ msgstr "Expediente zenbakia"
 msgid "Contract information"
 msgstr "Informazio gehigarria"
 
+=======
+#: contract.py:63
+msgid "Contract Procedure"
+msgstr "Prozedura"
+
+#: contractsfolder.py:77
+msgid "Contract Procedures"
+msgstr "Prozedurak"
+
+#: contract.py:70
+msgid "Contract Processing"
+msgstr "Izapidea"
+
+#: contractsfolder.py:89
+msgid "Contract Processings"
+msgstr "Izapideak"
+
+#: contract.py:91
+msgid "Contract State"
+msgstr "Egoera"
+
+#: contractsfolder.py:67
+msgid "Contract States"
+msgstr "Egoerak"
+
+#: contract.py:56
+msgid "Contract Type"
+msgstr "Mota"
+
+#: contractsfolder.py:57
+msgid "Contract Types"
+msgstr "Motak"
+
+#: contractsfolder.py:113
+msgid "Contract bodies"
+msgstr ""
+
+#: contract.py:84
+msgid "Contract body"
+msgstr ""
+
+#: contractsfolder.py:46
+msgid "Contract body name"
+msgstr ""
+
+#: contractsfolder.py:45
+msgid "Contract body value"
+msgstr ""
+
+#: contractsfolder.py:117
+msgid "Contract bodys"
+msgstr ""
+
+#: contract.py:50
+msgid "Contract file number"
+msgstr "Expediente zenbakia"
+
+#: contract.py:105
+msgid "Contract information"
+msgstr "Informazio gehigarria"
+
+#: contract.py:77
+msgid "Contract organization"
+msgstr ""
+
+#: contractsfolder.py:40
+msgid "Contract organization name"
+msgstr ""
+
+#: contractsfolder.py:39
+msgid "Contract organization value"
+msgstr ""
+
+#: contractsfolder.py:101
+msgid "Contract organizations"
+msgstr ""
+
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 #: contractsfolder.py:28
 msgid "Contract procedure name"
 msgstr "Prozedura izena"
@@ -104,10 +192,22 @@ msgstr "Kontratatzailearen profila"
 msgid "ContractsFolder"
 msgstr "Kontratatzailearen profila"
 
+<<<<<<< HEAD
+=======
+#: contract.py:27
+msgid "Date description"
+msgstr ""
+
+#: contract.py:36
+msgid "Date link"
+msgstr ""
+
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 #: contract.py:22
 msgid "Date title"
 msgstr "Dataren titulua"
 
+<<<<<<< HEAD
 #: contract.py:24
 msgid "Day"
 msgstr "Data"
@@ -157,6 +257,73 @@ msgid "Last Date"
 msgstr "Azken eguna"
 
 #: contract.py:67
+=======
+#: contract.py:32
+msgid "Day"
+msgstr "Data"
+
+#: contractsfolder.py:78
+msgid "Enter here the contract Procedures"
+msgstr "Sartu hemen prozedura desberdinak"
+
+#: contractsfolder.py:90
+msgid "Enter here the contract Processings"
+msgstr "Sartu hemen izapide desberdinak"
+
+#: contractsfolder.py:114
+msgid "Enter here the contract bodies"
+msgstr ""
+
+#: contractsfolder.py:102
+msgid "Enter here the contract organizations"
+msgstr ""
+
+#: contractsfolder.py:68
+msgid "Enter here the contract states"
+msgstr "Sartu hemen egoera desberdinak"
+
+#: contractsfolder.py:58
+msgid "Enter here the contract types"
+msgstr "Sartu hemen mota desberdinak"
+
+#: contract.py:49
+msgid "File Number"
+msgstr "Expediente zenbakia"
+
+#: contract.py:62
+msgid "File Procedure"
+msgstr "Prozedura"
+
+#: contract.py:69
+msgid "File Processing"
+msgstr "Izapidea"
+
+#: contract.py:90
+msgid "File State"
+msgstr "Egoera"
+
+#: contract.py:55
+msgid "File Type"
+msgstr "Mota"
+
+#: contract.py:83
+msgid "File body"
+msgstr ""
+
+#: contract.py:76
+msgid "File organization"
+msgstr ""
+
+#: contractsfolder.py:122
+msgid "Generic File"
+msgstr "Fitxategi orokorra"
+
+#: contract.py:97
+msgid "Last Date"
+msgstr "Azken eguna"
+
+#: contract.py:98
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "Last date for the submission of tenders"
 msgstr "Eskaintzak aurkezteko azken eguna"
 
@@ -164,6 +331,7 @@ msgstr "Eskaintzak aurkezteko azken eguna"
 msgid "Public Contract"
 msgstr "Kontratua"
 
+<<<<<<< HEAD
 #: tests/test_vocab_contract_procedures_vocabulary.py:31
 #: tests/test_vocab_contract_processings_vocabulary.py:31
 #: tests/test_vocab_contract_states_vocabulary.py:31
@@ -179,23 +347,56 @@ msgid "cs.publiccontracts"
 msgstr ""
 
 #: configure.zcml:35
+=======
+#: tests/test_vocab_contract_procedures_vocabulary.py:30
+#: tests/test_vocab_contract_processings_vocabulary.py:30
+#: tests/test_vocab_contract_states_vocabulary.py:30
+msgid "Sony Aplha 7R III"
+msgstr ""
+
+#: configure.zcml:34
+msgid "Unintall profile Content-types for cs.publiccontracts. Public Contracs Product"
+msgstr ""
+
+#: configure.zcml:26
+msgid "cs.publiccontracts"
+msgstr ""
+
+#: configure.zcml:34
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "cs.publiccontracts: Uninstall"
 msgstr ""
 
 #. Default: "Dates"
+<<<<<<< HEAD
 #: views/contractview.pt:84
 msgid "dates"
 msgstr "Datak"
 
+=======
+#: views/contractview.pt:77
+msgid "dates"
+msgstr "Datak"
+
+#: views/contractview.pt:56
+msgid "file_body"
+msgstr ""
+
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 #: views/contractsfolderview.pt:64
 msgid "file_number"
 msgstr "Espediente zenbakia"
 
 #. Default: "File number:"
+<<<<<<< HEAD
 #: views/contractview.pt:20
+=======
+#: views/contractview.pt:14
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "file_number_title"
 msgstr "Espediente zenbakia:"
 
+<<<<<<< HEAD
 #: views/contractsfolderview.pt:72 views/contractview.pt:63
 msgid "file_procedure"
 msgstr "Prozedura"
@@ -209,11 +410,34 @@ msgid "file_state"
 msgstr "Egoera"
 
 #: views/contractsfolderview.pt:68 views/contractview.pt:58
+=======
+#: views/contractview.pt:61
+msgid "file_organization"
+msgstr ""
+
+#: views/contractsfolderview.pt:72 views/contractview.pt:46
+msgid "file_procedure"
+msgstr "Prozedura"
+
+#: views/contractsfolderview.pt:79 views/contractview.pt:51
+msgid "file_processing"
+msgstr "Izapidea"
+
+#: views/contractview.pt:66
+msgid "file_state"
+msgstr "Egoera"
+
+#: views/contractsfolderview.pt:68 views/contractview.pt:41
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "file_type"
 msgstr "Mota"
 
 #. Default: "Files"
+<<<<<<< HEAD
 #: views/contractview.pt:99
+=======
+#: views/contractview.pt:92
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "files"
 msgstr "Fitxategiak"
 
@@ -222,6 +446,7 @@ msgstr "Fitxategiak"
 msgid "generic-file-text"
 msgstr "Kontratazio publikoaren argibideak"
 
+<<<<<<< HEAD
 #: contract.py:73 views/contractview.pt:78
 msgid "info"
 msgstr "Informazio gehigarria"
@@ -231,6 +456,22 @@ msgid "last_date"
 msgstr "Azken eguna"
 
 #: views/contractsfolderview.pt:86 views/contractview.pt:32
+=======
+#: contract.py:104 views/contractview.pt:71
+msgid "info"
+msgstr "Informazio gehigarria"
+
+#: views/contractsfolderview.pt:88 views/contractview.pt:26
+msgid "last_date"
+msgstr "Azken eguna"
+
+#. Default: "More info"
+#: views/contractview.pt:85
+msgid "more-info"
+msgstr "Informazio gehiago"
+
+#: views/contractsfolderview.pt:86 views/contractview.pt:20
+>>>>>>> 65c167613e5a5306c7871170c8ff866b4a041836
 msgid "published_date"
 msgstr "Argitaratze data"
 

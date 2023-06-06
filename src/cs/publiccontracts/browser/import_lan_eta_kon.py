@@ -12,7 +12,7 @@ from Products.Five.browser import BrowserView
 from pytz import timezone
 from zope.component import getUtility
 from zope.interface import alsoProvides
-
+from plone.i18n.normalizer import idnormalizer
 import dateutil.parser
 import requests
 
@@ -28,12 +28,12 @@ class ImportView(BrowserView):
         request = self.request
         alsoProvides(request, IDisableCSRFProtection)
         if context.Language() == "eu":
-            resource_url = "http://localhost:5180/zumaia/eu/iragarki-taula/lan-eskaintza-publikoa/export_laneskaintzak"
+            resource_url = "https://www.arrasate.eus/eu/tramiteak/lan-eskaintzak/export_laneskaintzak"
             # resource_url = "http://localhost:8098/oinati/eu/export_kontratazioak"
         else:
-            resource_url = "http://localhost:8098/oinati/es/export_laneskaintzak"
+            resource_url = "http://localhost:8198/arrasate/es/tramites-online/oferta-de-empleo-publico/export_laneskaintzak"
             # resource_url = "http://localhost:8098/oinati/es/export_kontratazioak"
-        r = requests.get(resource_url, auth=("admintest", "admintest"))
+        r = requests.get(resource_url, auth=("lur", "kontuz"))
         response = r.json()
 
         for item in response:
@@ -43,7 +43,7 @@ class ImportView(BrowserView):
             contract = context.get(item.get("id"), None)
             contract.title = item.get("title")
             contract.file_number = item.get("file_number")
-            contract.file_state = item.get("situation")
+            contract.file_state = idnormalizer.normalize(item.get("situation"))
             if item.get("portal_type") == "laneskaintza":
                 contract.info = RichTextValue(
                     item.get("information"), "text/html", "text/html"
@@ -77,7 +77,9 @@ class ImportView(BrowserView):
                         info_html += u"<h3>{}</h3>".format(info_title)
                         info_html += info_value
 
-                contract.info = RichTextValue(info_html, "text/html", "text/html")
+                contract.info = RichTextValue(
+                    info_html, "text/html", "text/html"
+                )
 
                 date_fields = [
                     "published_date",
@@ -101,10 +103,18 @@ class ImportView(BrowserView):
                 ]
 
                 normalizer = getUtility(IIDNormalizer)
-                contract.file_state = normalizer.normalize(item.get("situation"))
-                contract.file_type = normalizer.normalize(item.get("contract_type"))
-                contract.file_processing = normalizer.normalize(item.get("izapidea"))
-                contract.file_procedure = normalizer.normalize(item.get("process"))
+                contract.file_state = normalizer.normalize(
+                    item.get("situation")
+                )
+                contract.file_type = normalizer.normalize(
+                    item.get("contract_type")
+                )
+                contract.file_processing = normalizer.normalize(
+                    item.get("izapidea")
+                )
+                contract.file_procedure = normalizer.normalize(
+                    item.get("process")
+                )
                 contract.file_organization = normalizer.normalize(
                     item.get("organization")
                 )
@@ -120,30 +130,41 @@ class ImportView(BrowserView):
                 if date_date:
                     bbb = dateutil.parser.parse(date_date).astimezone(madrid)
                     date_list.append(
-                        {"title": date["title"], "day": bbb.replace(tzinfo=None)}
+                        {
+                            "title": date["title"],
+                            "day": bbb.replace(tzinfo=None),
+                        }
                     )
 
             if item["effective"]:
-                bbb = dateutil.parser.parse(item["effective"]).astimezone(madrid)
+                bbb = dateutil.parser.parse(item["effective"]).astimezone(
+                    madrid
+                )
                 contract.setEffectiveDate(bbb)
 
             if "last_date" in item.keys():
                 if item["last_date"]["value"]:
-                    bbb = dateutil.parser.parse(item["last_date"]["value"]).astimezone(
-                        madrid
-                    )
+                    bbb = dateutil.parser.parse(
+                        item["last_date"]["value"]
+                    ).astimezone(madrid)
                     contract.last_date = bbb.replace(tzinfo=None)
             contract.dates = date_list
 
             for file_field_id in file_fields:
                 file_field = item.get(file_field_id)
+                if not file_field:
+                    continue
                 file_filename = file_field["filename"]
                 file_url = file_field["url"]
                 file_title = file_field["title"]
                 if file_filename:
-                    r_file = requests.get(file_url, auth=("admintest", "admintest"))
+                    r_file = requests.get(
+                        file_url, auth=("admintest", "admintest")
+                    )
                     file_file = r_file.content
-                    new_file = contract.get(idnormalizer.normalize(file_filename), None)
+                    new_file = contract.get(
+                        idnormalizer.normalize(file_filename), None
+                    )
                     if not new_file:
                         try:
                             contract.invokeFactory(
@@ -157,8 +178,12 @@ class ImportView(BrowserView):
 
                             pdb.set_trace()
                             b = 2
-                    new_file = contract.get(idnormalizer.normalize(file_filename), None)
-                    new_file.file = NamedBlobFile(file_file, filename=file_filename)
+                    new_file = contract.get(
+                        idnormalizer.normalize(file_filename), None
+                    )
+                    new_file.file = NamedBlobFile(
+                        file_file, filename=file_filename
+                    )
 
                     new_file.reindexObject()
 
@@ -182,7 +207,9 @@ class ImportView(BrowserView):
                         context_translation = ITranslationManager(
                             context
                         ).get_translation("eu")
-                        contract_eu_obj = context_translation.get(contract_full_path)
+                        contract_eu_obj = context_translation.get(
+                            contract_full_path
+                        )
                         if contract_eu_obj:
                             ITranslationManager(contract).register_translation(
                                 "eu", contract_eu_obj
