@@ -112,9 +112,23 @@
 
           <dl class="contract-files">
             <tal:repeat repeat="file files">
-              <dt tal:content="file/Title"></dt>
-
+              <dt>
+                <span tal:content="file/Title"></span>
+              </dt>
               <dd>
+                <span
+                  tal:define="effective_date file/EffectiveDate;
+                  published_date context/EffectiveDate;"
+                  tal:condition="python: effective_date and effective_date != 'None' "
+                >
+                  <small i18n:translate="published_date">published_date</small>
+                  <small>
+                    <tal:replace
+                      replace="python:context.toLocalizedTime(effective_date)"
+                    >
+                    </tal:replace>
+                  </small>
+                </span>
                 <tal:filecontent
                   tal:define="content_type file/file/contentType|nothing;
                                          v python:file.restrictedTraverse('contenttype_utils');"
@@ -137,7 +151,8 @@
                       tal:define="size file/file/getSize;
                                           kb python:size/1024"
                     >
-                      &mdash; <span tal:replace="python:'{:.2f}'.format(kb)" /> KB</span
+                      &mdash;
+                      <span tal:replace="python:'{:.2f}'.format(kb)" /> KB</span
                     >
                   </p>
 
