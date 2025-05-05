@@ -15,7 +15,7 @@ from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory
-
+from plone import api
 
 class IDatesRowSchema(Interface):
     title = schema.TextLine(
@@ -175,7 +175,9 @@ class Contract(Container):
             return None
 
     def files(self):
-        return self.getFolderContents({"portal_type": "File"}, full_objects=1)
+        files_list = api.content.find(context=self,
+                                      portal_type='File')
+        return [file.getObject() for file in files_list]
 
     def contract_state_index(self):
         return self.file_state

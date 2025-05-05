@@ -1,37 +1,36 @@
-// Wait until the DOM has loaded before querying the document
-      $(document).ready(function(){
-        $('ul.tabs').each(function(){
-          // For each set of tabs, we want to keep track of
-          // which tab is active and it's associated content
-          var $active, $content, $links = $(this).find('a');
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('ul.tabs').forEach(function (tabContainer) {
+    let links = tabContainer.querySelectorAll('a');
+    let activeLink =
+      Array.from(links).find(
+        (link) => link.getAttribute('href') === location.hash,
+      ) || links[0];
+    let activeContent = document.querySelector(activeLink.getAttribute('href'));
 
-          // If the location.hash matches one of the links, use that as the active tab.
-          // If no match is found, use the first link as the initial active tab.
-          $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-          $active.addClass('active');
-          $content = $($active.attr('href'));
+    activeLink.classList.add('active');
 
-          // Hide the remaining content
-          $links.not($active).each(function () {
-            $($(this).attr('href')).hide();
-          });
+    links.forEach((link) => {
+      let content = document.querySelector(link.getAttribute('href'));
+      if (content !== activeContent) {
+        content.style.display = 'none';
+      }
+    });
 
-          // Bind the click event handler
-          $(this).on('click', 'a', function(e){
-            // Make the old tab inactive.
-            $active.removeClass('active');
-            $content.hide();
+    tabContainer.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
 
-            // Update the variables with the new link and content
-            $active = $(this);
-            $content = $($(this).attr('href'));
+        // Remove active state and hide current content
+        activeLink.classList.remove('active');
+        activeContent.style.display = 'none';
 
-            // Make the tab active.
-            $active.addClass('active');
-            $content.show();
+        // Set new active link and content
+        activeLink = e.target;
+        activeContent = document.querySelector(activeLink.getAttribute('href'));
 
-            // Prevent the anchor's default click action
-            e.preventDefault();
-          });
-        });
-      });
+        activeLink.classList.add('active');
+        activeContent.style.display = '';
+      }
+    });
+  });
+});
