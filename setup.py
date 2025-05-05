@@ -41,8 +41,8 @@ setup(
         "plone.app.dexterity",
         "plone.namedfile",
         "collective.z3cform.datagridfield",
-        "z3c.unconfigure",
-        "collective.dexteritytextindexer",
+        # "z3c.unconfigure",
+        # "collective.dexteritytextindexer",
         "Plone > 4.99"
         # -*- Extra requirements: -*-
     ],

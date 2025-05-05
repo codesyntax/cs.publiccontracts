@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_parent
-from collective import dexteritytextindexer
+from plone.app.dexterity import textindexer
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.row import DictRow
 from cs.publiccontracts import _
@@ -34,7 +34,7 @@ class IContract(Interface):
     Public Contract
     """
 
-    dexteritytextindexer.searchable("file_number")
+    textindexer.searchable("file_number")
     file_number = schema.TextLine(
         title=_(u"File Number"),
         description=_(u"Contract file number"),
@@ -89,7 +89,7 @@ class IContract(Interface):
         required=False,
     )
 
-    dexteritytextindexer.searchable("file_number")
+    textindexer.searchable("file_number")
     info = RichText(
         title=_(u"info"),
         description=_(u"Contract information"),
