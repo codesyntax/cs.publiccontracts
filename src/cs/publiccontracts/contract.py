@@ -20,7 +20,7 @@ from plone import api
 class IDatesRowSchema(Interface):
     title = schema.TextLine(
         title=_(u"Date title"),
-        description=_(u"Date title"),
+        description=_(u"Date title description"),
         required=False,
     )
     day = schema.Datetime(
